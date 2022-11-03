@@ -1,0 +1,12 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading1("Basic Modal")
+    @Html.Bootstrap().Button("Click me").SetIcon(Icon.ModalWindow).AddAttributes(new Dictionary<string, object> { { "data-target", "#testModal" }, { "data-toggle", "modal" } })
+    using (Html.Bootstrap().Modal("Title").SetId("testModal").Begin())
+    {
+        using (@Html.Bootstrap().ModalBody().Begin())
+        {
+            <p>Content...</p>
+        }
+    }
+}
