@@ -17,8 +17,8 @@ namespace FluentBootstrapCore
         protected override void OnStart(TextWriter writer)
         {
             base.OnStart(writer);
-            IHtmlContent? htmlString = _content as IHtmlContent;
-            writer.Write(htmlString != null ? htmlString.ToString() : HttpUtility.HtmlEncode(_content));
+            var htmlContent = _content as IHtmlContent;
+            writer.Write(htmlContent != null ? htmlContent.ToHtmlString() : HttpUtility.HtmlEncode(_content));
         }
     }
 }

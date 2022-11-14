@@ -140,9 +140,12 @@ namespace FluentBootstrapCore
             }
         }
 
-        // This should only be used implicitly in a view and not from within this library (because of the way pending components are handled)
-        // Instead, use Component.StartAndFinish() to write out the content of a component during Prepare, OnStart, or OnFinish
-        public override string ToString()
+        /// <summary>
+        /// This should only be used implicitly in a view and not from within this library (because of the way pending components are handled)
+        /// Instead, use Component.StartAndFinish() to write out the content of a component during Prepare, OnStart, or OnFinish
+        /// </summary>
+        /// <returns></returns>
+        public string ToHtml()
         {
             // Write this component out as a string
             using (StringWriter writer = new StringWriter())
@@ -226,10 +229,11 @@ namespace FluentBootstrapCore
             Stack<Component> stack = GetComponentStack();
 
             // Peek components until we get to this one - the call to Finish() will pop them
-            Component peek = null;
-            while (stack.Count > 0 && (peek = stack.Peek()) != this && peek.Implicit)
+            Component peek = stack.Peek();
+            while (stack.Count > 0 && peek != this && peek.Implicit)
             {
                 peek.Finish(writer);
+                peek = stack.Peek();
             }
 
             // Sanity check

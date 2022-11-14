@@ -87,7 +87,7 @@ namespace FluentBootstrapCore
             if (content != null)
             {
                 // Make sure that this isn't a component
-                ComponentBuilder contentBuilder = content as ComponentBuilder;
+                var contentBuilder = content as ComponentBuilder;
                 if (contentBuilder != null)
                 {
                     builder.Component.AddChild(contentBuilder.GetComponent());
@@ -95,10 +95,10 @@ namespace FluentBootstrapCore
 
                 // Now check if it's an IHtmlContent
                 string str;
-                IHtmlContent htmlString = content as IHtmlContent;
+                var htmlString = content as IHtmlContent;
                 if (htmlString != null)
                 {
-                    str = htmlString.ToString();
+                    str = htmlString.ToHtmlString();
                 }
                 else
                 {
@@ -123,7 +123,7 @@ namespace FluentBootstrapCore
             if (content != null)
             {
                 // Make sure that this isn't a component
-                ComponentBuilder contentBuilder = content as ComponentBuilder;
+                var contentBuilder = content as ComponentBuilder;
                 if (contentBuilder != null)
                 {
                     builder.Component.AddChildAtEnd(contentBuilder.GetComponent());
@@ -131,10 +131,10 @@ namespace FluentBootstrapCore
 
                 // Now check if it's an IHtmlContent
                 string str;
-                IHtmlContent htmlString = content as IHtmlContent;
+                var htmlString = content as IHtmlContent;
                 if (htmlString != null)
                 {
-                    str = htmlString.ToString();
+                    str = htmlString.ToHtmlString();
                 }
                 else
                 {
@@ -190,11 +190,13 @@ namespace FluentBootstrapCore
 
         // This is a very special extension - it allows adding a child using fluent style and switches the current chaining object to the child
         // behind the scenes the parent start is immediately output and the child ends the parent when it ends (so that the while hierarchy gets output)
+        [Obsolete("Net 6 IHtmlContent is not compatible", true)]
         public static ComponentWrapper<TConfig, TTag> WithChild<TConfig, TTag>(this ComponentBuilder<TConfig, TTag> builder)
             where TConfig : BootstrapConfig
             where TTag : Tag
         {
-            ComponentWrapper<TConfig, TTag> wrapper = builder.Begin();
+            //TODO:??? Net Core does not trigger chained component IHtmlContent.WriteTo
+            var wrapper = builder.Begin();
             wrapper.WithChild = true;
             return wrapper;
         }

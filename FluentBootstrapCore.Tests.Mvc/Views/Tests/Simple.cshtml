@@ -1,0 +1,8 @@
+﻿@*@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Link("Link").WithChild().Badge("789")
+}*@
+@using (var group = Html.Bootstrap().ButtonGroup().SetJustified().Begin())
+{
+    @group.Button("A")
+}

@@ -72,18 +72,12 @@ namespace FluentBootstrapCore
 
         public string ToHtmlString()
         {
-            return ToString();
-        }
-
-        public override string ToString()
-        {
-            return Component.ToString();
+            return Component.ToHtml();
         }
 
         public void WriteTo(TextWriter writer, HtmlEncoder encoder)
         {
-            writer.Write(ToString());
-            //throw new System.NotImplementedException();
+            writer.Write(ToHtmlString());
         }
     }
 }

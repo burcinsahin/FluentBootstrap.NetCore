@@ -5,22 +5,35 @@
     {
         <p>Badge @Html.Bootstrap().Badge("4")</p>
     }
-    
+
     <hr />
 
     @Html.Bootstrap().Heading1("Link")
     using (Html.Bootstrap().Div().SetId("test-link").Begin())
     {
-        <p>@Html.Bootstrap().Link("Link").WithChild().Badge("789")</p>
+        <p>
+            @using (var link=Html.Bootstrap().Link("Link").Begin())
+            {
+                @link.Badge("789")
+            }
+        </p>
     }
 
     <hr />
-    
+
     @Html.Bootstrap().Heading1("Button")
     using (Html.Bootstrap().Div().SetId("test-button").Begin())
     {
-        @Html.Bootstrap().Button("Button").WithChild().Badge("4")
-        @Html.Bootstrap().Button("Button").SetState(ButtonState.Primary).WithChild().Badge("456")
+        @using (var btn = Html.Bootstrap().Button("Button").Begin())
+        {
+            @btn.Badge("4")
+        }
+        @using (var btn = Html.Bootstrap().Button("Button").SetState(ButtonState.Primary).Begin())
+        {
+            @btn.Badge("456")
+        }
+@*        @Html.Bootstrap().Button("Button").WithChild().Badge("4")
+        @Html.Bootstrap().Button("Button").SetState(ButtonState.Primary).WithChild().Badge("456")*@
     }
 
     <hr />
@@ -28,10 +41,18 @@
     @Html.Bootstrap().Heading1("Pills")
     using (Html.Bootstrap().Div().SetId("test-pills").Begin())
     {
-        using(var pills = Html.Bootstrap().Pills().Begin())
+        using (var pills = Html.Bootstrap().Pills().Begin())
         {
-            @pills.Pill("A").WithChild().Badge("3")
-            @pills.Pill("B").SetActive().WithChild().Badge("5")
+            @using (var pill = pills.Pill("A").Begin())
+            {
+                @pill.Badge("3")
+            }
+            @using (var pill = pills.Pill("B").SetActive().Begin())
+            {
+                @pill.Badge("5")
+            }
+@*            @pills.Pill("A").WithChild().Badge("3")
+            @pills.Pill("B").SetActive().WithChild().Badge("5")*@
         }
     }
 

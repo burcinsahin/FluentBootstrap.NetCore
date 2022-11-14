@@ -5,7 +5,7 @@
     @Html.Bootstrap().Heading1("Basic")
     using (Html.Bootstrap().Div().SetId("test-basic").Begin())
     {
-        using(var listGroup = Html.Bootstrap().ListGroup().Begin())
+        using (var listGroup = Html.Bootstrap().ListGroup().Begin())
         {
             @listGroup.ListGroupItem("Item one")
             @listGroup.ListGroupItem("Item two")
@@ -14,14 +14,22 @@
     }
 
     <hr />
-    
+
     @Html.Bootstrap().Heading1("Badges")
     using (Html.Bootstrap().Div().SetId("test-badges").Begin())
     {
         using (var listGroup = Html.Bootstrap().ListGroup().Begin())
         {
-            @listGroup.ListGroupItem("Item one").WithChild().Badge("14")
-            @listGroup.ListGroupItem("Item two").WithChild().Badge("Great!")
+            @*@listGroup.ListGroupItem("Item one").WithChild().Badge("14")
+            @listGroup.ListGroupItem("Item two").WithChild().Badge("Great!")*@
+            using (var item = Html.Bootstrap().ListGroupItem("Item one").Begin())
+            {
+                @item.Badge("14")
+            }
+            using (var item = Html.Bootstrap().ListGroupItem("Item two").Begin())
+            {
+                @item.Badge("Great!")
+            }
         }
     }
 
@@ -49,7 +57,11 @@
             @listGroup.ListGroupButton("C").SetIcon(Icon.Check)
             @listGroup.ListGroupItem("Normal item")
             @listGroup.ListGroupButton("D").IsDisabled()
-            @listGroup.ListGroupButton("E").WithChild().Badge("Badge!")
+            using (var btn = Html.Bootstrap().ListGroupButton("E").Begin())
+            {
+                @btn.Badge("Badge!")
+            }
+            @*@listGroup.ListGroupButton("E").WithChild().Badge("Badge!")*@
         }
     }
 
@@ -103,10 +115,10 @@
     {
         using (var listGroup = Html.Bootstrap().ListGroup().Begin())
         {
-            using(var item = listGroup.ListGroupItem().Begin())
+            using (var item = listGroup.ListGroupItem().Begin())
             {
                 @item.Heading3("Heading")
-                using(item.Paragraph().Begin())
+                using (item.Paragraph().Begin())
                 {
                     <text>Some text.</text>
                 }
