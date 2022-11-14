@@ -1,0 +1,31 @@
+﻿@using FluentBootstrapCore;
+
+@using (Html.Bootstrap().Container().Begin())
+{
+@*    @Html.Bootstrap().Heading1("Alternate Model")
+    using (Html.Bootstrap().Div().SetId("test-alternate-model").Begin())
+    {
+        var model = new { Foo = "Foo", Bar = true, Baz = 123 };
+        using (var form = Html.Bootstrap(model).Form().Begin())
+        {
+            @form.EditorFor(x => x.Foo)
+            @form.DisplayFor(x => x.Bar)
+            @form.EditorFor(x => x.Baz)
+        }
+    }
+
+    <hr />*@
+
+    @Html.Bootstrap().Heading1("Alternate Begin Syntax")
+    using (Html.Bootstrap().Div().SetId("test-alternate-begin").Begin())
+    {
+        using (var group = Html.Bootstrap().Begin(x => x.ButtonGroup()))
+        {
+            @group.Button("A").SetIcon(Icon.Music)
+            @group.Button("B")
+        }
+    }
+
+    @Html.Bootstrap().Heading1("Empty Stack (Issue #1)")
+    @Html.Bootstrap().Dropdown("My Dropdown")
+}

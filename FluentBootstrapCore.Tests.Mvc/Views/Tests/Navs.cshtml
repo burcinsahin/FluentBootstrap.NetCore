@@ -1,0 +1,147 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading1("Tabs")
+    using (Html.Bootstrap().Div().SetId("test-tabs").Begin())
+    {
+        using(var tabs = Html.Bootstrap().Tabs().Begin())
+        {
+            @tabs.Tab("Home").SetActive()
+            @tabs.Tab("Profile", "http://www.google.com")
+            @tabs.Tab("Messages")
+        }
+    }
+
+    <hr />
+    
+    @Html.Bootstrap().Heading1("Pills")
+    using (Html.Bootstrap().Div().SetId("test-pills").Begin())
+    {
+        using (var pills = Html.Bootstrap().Pills().Begin())
+        {
+            @pills.Pill("Home").SetActive()
+            @pills.Pill("Profile", "http://www.google.com")
+            @pills.Pill("Messages")
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Stacked Pills")
+    using (Html.Bootstrap().Div().SetId("test-stacked-pills").Begin())
+    {
+        using (var pills = Html.Bootstrap().Pills().SetStacked().Begin())
+        {
+            @pills.Pill("Home").SetActive()
+            @pills.Pill("Profile", "http://www.google.com")
+            @pills.Pill("Messages")
+        }
+    }
+
+    <hr />
+    
+    @Html.Bootstrap().Heading1("Justified Tabs")
+    using (Html.Bootstrap().Div().SetId("test-justified-tabs").Begin())
+    {
+        using (var tabs = Html.Bootstrap().Tabs().SetJustified().Begin())
+        {
+            @tabs.Tab("Home").SetActive()
+            @tabs.Tab("Profile", "http://www.google.com")
+            @tabs.Tab("Messages")
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Justified Pills")
+    using (Html.Bootstrap().Div().SetId("test-justified-pills").Begin())
+    {
+        using (var pills = Html.Bootstrap().Pills().SetJustified().Begin())
+        {
+            @pills.Pill("Home").SetActive()
+            @pills.Pill("Profile", "http://www.google.com")
+            @pills.Pill("Messages")
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Disabled Pill")
+    using (Html.Bootstrap().Div().SetId("test-disabled-pill").Begin())
+    {
+        using (var pills = Html.Bootstrap().Pills().Begin())
+        {
+            @pills.Pill("Home").SetActive()
+            @pills.Pill("Profile", "http://www.google.com").SetDisabled()
+            @pills.Pill("Messages")
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Tabs Dropdown")
+    using (Html.Bootstrap().Div().SetId("test-tabs-dropdown").Begin())
+    {
+        using (var tabs = Html.Bootstrap().Tabs().Begin())
+        {
+            @tabs.Tab("Home").SetActive()
+            @tabs.Tab("Profile", "http://www.google.com").SetDisabled()
+            using(var dropdown = tabs.Dropdown("Dropdown").Begin())
+            {
+                @dropdown.DropdownLink("Item 1")
+                @dropdown.DropdownDivider()
+                @dropdown.DropdownLink("Item 2")
+            }
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Pills Dropdown")
+    using (Html.Bootstrap().Div().SetId("test-pills-dropdown").Begin())
+    {
+        using (var pills = Html.Bootstrap().Pills().Begin())
+        {
+            @pills.Pill("Home").SetActive()
+            @pills.Pill("Profile", "http://www.google.com").SetDisabled()
+            using (var dropdown = pills.Dropdown("Dropdown").Begin())
+            {
+                @dropdown.DropdownLink("Item 1")
+                @dropdown.DropdownDivider()
+                @dropdown.DropdownLink("Item 2")
+            }
+        }
+    }
+    
+    @Html.Bootstrap().Heading1("Tabs with JavaScript")
+    using (Html.Bootstrap().Div().SetId("test-tabs-with-javascript").Begin())
+    {
+        using (var tabs = Html.Bootstrap().Tabs().Begin())
+        {
+            @tabs.Tab("Home", "#home").SetActive().AddAttribute("aria-controls", "home").AddAttribute("role", "tab").AddAttribute("data-toggle", "tab")
+            @tabs.Tab("Profile", "#profile").AddAttribute("aria-controls", "profile").AddAttribute("role", "tab").AddAttribute("data-toggle", "tab")
+            @tabs.Tab("Messages", "#messages").AddAttribute("aria-controls", "messages").AddAttribute("role", "tab").AddAttribute("data-toggle", "tab")
+            @tabs.Tab("Settings", "#settings").AddAttribute("aria-controls", "settings").AddAttribute("role", "tab").AddAttribute("data-toggle", "tab")
+        }
+        using (Html.Bootstrap().Div().AddCss("tab-content").Begin())
+        {
+            using (Html.Bootstrap().Div().SetId("home").AddCss("tab-pane", "active").AddAttribute("role", "tabpanel").Begin())
+            {
+                <text>This is the home tab.</text>
+            }
+            using (Html.Bootstrap().Div().SetId("profile").AddCss("tab-pane").AddAttribute("role", "tabpanel").Begin())
+            {
+                <text>This is the profile tab.</text>
+            }
+            using (Html.Bootstrap().Div().SetId("messages").AddCss("tab-pane").AddAttribute("role", "tabpanel").Begin())
+            {
+                <text>This is the messages tab.</text>
+            }
+            using (Html.Bootstrap().Div().SetId("settings").AddCss("tab-pane").AddAttribute("role", "tabpanel").Begin())
+            {
+                <text>This is the settings tab.</text>
+            }
+        }
+    }
+
+    <hr />
+}

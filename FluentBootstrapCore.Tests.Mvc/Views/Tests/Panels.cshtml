@@ -1,0 +1,76 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading1("Simple Panel")
+    using (Html.Bootstrap().Div().SetId("test-simple").Begin())
+    {
+        using (var panel = Html.Bootstrap().Panel("Panel Title", 1).Begin())
+        {
+            using (panel.PanelBody().Begin())
+            {
+                <p>Panel Content</p>
+            }
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Collapse Panel")
+    using (Html.Bootstrap().Div().SetId("test-collapse").Begin())
+    {
+        using (var panel = Html.Bootstrap().Panel("Panel Title").SetState(PanelState.Info).SetCollapsible().Begin())
+        {
+            using (panel.PanelBody().Begin())
+            {
+                <p>Panel Content</p>
+            }
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Panel Group")
+    using (Html.Bootstrap().Div().SetId("test-group").Begin())
+    {
+        using (var accordion = Html.Bootstrap().PanelGroup().Begin())
+        {
+            using (var p1 = accordion.Panel("Title 1").Begin())
+            {
+                using (p1.PanelBody().Begin())
+                {
+                    <p>Body Content</p>
+                }
+            }
+            using (var p2 = accordion.Panel("Title 2").SetCollapsible().Begin())
+            {
+                using (p2.PanelBody().Begin())
+                {
+                    <p>Body Content</p>
+                }
+            }
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Accordion Panel Group")
+    using (Html.Bootstrap().Div().SetId("test-accordion").Begin())
+    {
+        using (var accordion = Html.Bootstrap().PanelGroup(true).Begin())
+        {
+            using (var p1 = accordion.Panel("Title 1").Begin())
+            {
+                using (p1.PanelBody().Begin())
+                {
+                    <p>Body Content</p>
+                }
+            }
+            using (var p2 = accordion.Panel("Title 2").SetExpanded().Begin())
+            {
+                using (p2.PanelBody().Begin())
+                {
+                    <p>Body Content</p>
+                }
+            }
+        }
+    }
+}
