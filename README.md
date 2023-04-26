@@ -1,4 +1,4 @@
-# FluentBootstrapCore
+# FluentBootstrap.NetCore
 
 ## Overview
 
