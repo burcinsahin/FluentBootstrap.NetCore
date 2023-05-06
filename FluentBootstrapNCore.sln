@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentBootstrapNCore.Tests.Mvc", "FluentBootstrapCore.Tests.Mvc\FluentBootstrapNCore.Tests.Mvc.csproj", "{81823FC0-4DC5-49AF-BACE-B0DD8ECEBCCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentBootstrapNCore.Tests.Mvc", "FluentBootstrapNCore.Tests.Mvc\FluentBootstrapNCore.Tests.Mvc.csproj", "{81823FC0-4DC5-49AF-BACE-B0DD8ECEBCCC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentBootstrapNCore", "FluentBootstrapCore\FluentBootstrapNCore.csproj", "{5B1993C5-7B0C-44DD-B417-762E6657444A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentBootstrapNCore", "FluentBootstrapNCore\FluentBootstrapNCore.csproj", "{5B1993C5-7B0C-44DD-B417-762E6657444A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentBootstrapNCore.Mvc", "FluentBootstrapCore.Mvc\FluentBootstrapNCore.Mvc.csproj", "{BA2D74CA-0FEF-4441-9E6C-384B6D211558}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentBootstrapNCore.Mvc", "FluentBootstrapNCore.Mvc\FluentBootstrapNCore.Mvc.csproj", "{BA2D74CA-0FEF-4441-9E6C-384B6D211558}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
