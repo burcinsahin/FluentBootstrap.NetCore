@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public class SuppressOutputWriter : StringWriter
     {

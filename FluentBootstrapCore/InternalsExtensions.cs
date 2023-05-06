@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Interfaces;
+using System.IO;
 
-namespace FluentBootstrapCore.Internals
+namespace FluentBootstrapNCore
 {
     // This is a bit of a hack, but exposing internal members via extension methods in a separate namespace
     // was the only good way I could think of to allow extending libraries access without resorting to

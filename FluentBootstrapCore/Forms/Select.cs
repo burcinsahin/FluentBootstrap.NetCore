@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Interfaces;
+using System.IO;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     public class Select : FormControl, IHasNameAttribute,
         ICanCreate<SelectOption>
@@ -18,9 +19,7 @@ namespace FluentBootstrapCore.Forms
         protected override void OnStart(TextWriter writer)
         {
             if (Multiple)
-            {
                 MergeAttribute("multiple", "multiple");
-            }
 
             base.OnStart(writer);
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Tables
 {
     [Flags]
     public enum TableStyle

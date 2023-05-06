@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Interfaces;
+using System.IO;
 
-namespace FluentBootstrapCore.Navbars
+namespace FluentBootstrapNCore.Navbars
 {
     public class NavbarText : Tag, INavbarComponent, IHasTextContent
     {
@@ -19,9 +20,7 @@ namespace FluentBootstrapCore.Navbars
 
                 // Make sure we're in a collapse
                 if (GetComponent<NavbarCollapse>() == null)
-                {
                     GetHelper().NavbarCollapse().Component.Start(writer);
-                }
             }
 
             base.OnStart(writer);

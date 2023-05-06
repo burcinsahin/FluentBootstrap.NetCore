@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Dropdowns;
+﻿using FluentBootstrapNCore.Dropdowns;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.Navbars
+namespace FluentBootstrapNCore.Navbars
 {
     public class NavbarNav : Tag, INavbarComponent,
         ICanCreate<NavbarLink>,
@@ -15,9 +16,7 @@ namespace FluentBootstrapCore.Navbars
         {
             // Make sure we're in a collapse, but only if we're also in a navbar
             if (GetComponent<Navbar>() != null && GetComponent<NavbarCollapse>() == null)
-            {
                 GetHelper().NavbarCollapse().Component.Start(writer);
-            }
 
             base.OnStart(writer);
         }

@@ -1,10 +1,11 @@
-﻿using FluentBootstrapCore.Badges;
-using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Links;
-using FluentBootstrapCore.Navbars;
+﻿using FluentBootstrapNCore.Badges;
+using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
+using FluentBootstrapNCore.Navbars;
 using System.IO;
 
-namespace FluentBootstrapCore.Navs
+namespace FluentBootstrapNCore.Navs
 {
     public abstract class NavLink : Tag, IHasLinkExtensions, IHasTextContent,
         ICanCreate<Badge>
@@ -23,20 +24,14 @@ namespace FluentBootstrapCore.Navs
         {
             // Check if we're in a navbar, and if so, make sure we're in a navbar nav
             if (GetComponent<Navbar>() != null && GetComponent<NavbarNav>() == null)
-            {
                 GetHelper().NavbarNav().Component.Start(writer);
-            }
 
             // Create the list item wrapper
             _listItem = GetHelper().Element("li").Component;
             if (Active)
-            {
                 _listItem.AddCss(Css.Active);
-            }
             if (Disabled)
-            {
                 _listItem.AddCss(Css.Disabled);
-            }
             _listItem.Start(writer);
 
             base.OnStart(writer);

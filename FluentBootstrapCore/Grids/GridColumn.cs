@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Thumbnails;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Thumbnails;
 
-namespace FluentBootstrapCore.Grids
+namespace FluentBootstrapNCore.Grids
 {
     public class GridColumn : Tag, IHasGridColumnExtensions,
         ICanCreate<Thumbnail>,

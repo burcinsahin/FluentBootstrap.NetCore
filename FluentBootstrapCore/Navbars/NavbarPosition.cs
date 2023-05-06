@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Navbars
 {
     public enum NavbarPosition
     {

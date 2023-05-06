@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public abstract class Tag : Component
     {
@@ -38,7 +38,7 @@ namespace FluentBootstrapCore
             CssClasses = new HashSet<string>();
             Attributes = new MergeableDictionary();
             InlineStyles = new MergeableDictionary();
-            foreach (string cssClass in cssClasses.Where(x => !string.IsNullOrWhiteSpace(x)))
+            foreach (var cssClass in cssClasses.Where(x => !string.IsNullOrWhiteSpace(x)))
             {
                 CssClasses.Add(cssClass);
             }
@@ -54,16 +54,14 @@ namespace FluentBootstrapCore
             set
             {
                 if (_startTagOutput)
-                {
                     throw new InvalidOperationException("Can't change tag name after the start tag has been output.");
-                }
                 _tagName = value;
             }
         }
 
         public void AddCss(params string[] cssClasses)
         {
-            foreach (string cssClass in cssClasses)
+            foreach (var cssClass in cssClasses)
             {
                 CssClasses.Add(cssClass);
             }
@@ -71,7 +69,7 @@ namespace FluentBootstrapCore
 
         public void RemoveCss(params string[] cssClasses)
         {
-            foreach (string cssClass in cssClasses)
+            foreach (var cssClass in cssClasses)
             {
                 CssClasses.Remove(cssClass);
             }
@@ -125,7 +123,7 @@ namespace FluentBootstrapCore
         {
             if (add)
             {
-                foreach (string remove in removeIfAdding)
+                foreach (var remove in removeIfAdding)
                 {
                     CssClasses.Remove(remove);
                 }
@@ -142,14 +140,12 @@ namespace FluentBootstrapCore
         // The CSS class is specified as a DescriptionAttribute on each enum value (use description of null to indicate a default state)
         public void ToggleCss(Enum css)
         {
-            bool flags = css.GetType().GetCustomAttributes(typeof(FlagsAttribute), true).Any();
+            var flags = css.GetType().GetCustomAttributes(typeof(FlagsAttribute), true).Any();
             foreach (Enum value in Enum.GetValues(css.GetType()))
             {
-                string description = value.GetDescription();
+                var description = value.GetDescription();
                 if (!string.IsNullOrWhiteSpace(description))
-                {
                     ToggleCss(description, flags ? css.HasFlag(value) : css.Equals(value));
-                }
             }
         }
 
@@ -157,9 +153,7 @@ namespace FluentBootstrapCore
         {
             // Add the text content as a child
             if (TextContent != null)
-            {
                 AddChild(GetHelper().Content(TextContent));
-            }
 
             base.OnStart(writer);
 
@@ -167,8 +161,8 @@ namespace FluentBootstrapCore
             if (PrettyPrint && !(writer is SuppressOutputWriter))
             {
                 writer.WriteLine();
-                int tagIndent = (int)Config.GetItem(TagIndentKey, 0);
-                writer.Write(new String(' ', tagIndent++));
+                var tagIndent = (int)Config.GetItem(TagIndentKey, 0);
+                writer.Write(new string(' ', tagIndent++));
                 Config.AddItem(TagIndentKey, tagIndent);
                 Config.AddItem(LastToWriteKey, this);
             }
@@ -187,23 +181,19 @@ namespace FluentBootstrapCore
 
             // Generate the inline CSS style
             if (InlineStyles.Dictionary.Count > 0)
-            {
                 Attributes.Merge("style", string.Join(" ", InlineStyles.Dictionary.Select(x => x.Key + ": " + x.Value + ";")));
-            }
 
             // Append the start tag and any attributes
-            StringBuilder startTag = new StringBuilder("<" + _tagName);
-            foreach (KeyValuePair<string, string> attribute in Attributes.Dictionary)
+            var startTag = new StringBuilder("<" + _tagName);
+            foreach (var attribute in Attributes.Dictionary)
             {
                 // Skip over empty Ids
                 if (string.Equals(attribute.Key, "id", StringComparison.Ordinal) && string.IsNullOrEmpty(attribute.Value))
-                {
                     continue;
-                }
 
                 // We could suppress output of the value when the value is string.Empty, but leaving it there is still valid HTML5 and works better for other standards like XHTML
                 // See https://html.spec.whatwg.org/multipage/infrastructure.html#boolean-attribute
-                string encoded = HttpUtility.HtmlAttributeEncode(attribute.Value);
+                var encoded = HttpUtility.HtmlAttributeEncode(attribute.Value);
                 startTag.Append(" " + attribute.Key + "=\"" + encoded + "\"");
             }
             startTag.Append(">");
@@ -216,21 +206,19 @@ namespace FluentBootstrapCore
             // Pretty print
             if (PrettyPrint)
             {
-                int tagIndent = ((int)Config.GetItem(TagIndentKey, 0)) - 1;
+                var tagIndent = (int)Config.GetItem(TagIndentKey, 0) - 1;
                 Config.AddItem(TagIndentKey, tagIndent);
-                Tag lastToWrite = Config.GetItem(LastToWriteKey, null) as Tag;
+                var lastToWrite = Config.GetItem(LastToWriteKey, null) as Tag;
                 if (lastToWrite != this)
                 {
                     writer.WriteLine();
-                    writer.Write(new String(' ', tagIndent));
+                    writer.Write(new string(' ', tagIndent));
                 }
             }
 
             // Append the end tag
             if (OutputEndTag)
-            {
                 writer.Write("</" + _tagName + ">");
-            }
 
             base.OnFinish(writer);
         }

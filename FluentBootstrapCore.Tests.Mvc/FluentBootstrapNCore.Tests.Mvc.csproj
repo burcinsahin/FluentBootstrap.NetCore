@@ -37,8 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FluentBootstrapCore.Mvc\FluentBootstrapCore.Mvc.csproj" />
-    <ProjectReference Include="..\FluentBootstrapCore\FluentBootstrapCore.csproj" />
+    <ProjectReference Include="..\FluentBootstrapCore.Mvc\FluentBootstrapNCore.Mvc.csproj" />
+    <ProjectReference Include="..\FluentBootstrapCore\FluentBootstrapNCore.csproj" />
   </ItemGroup>
 
 </Project>

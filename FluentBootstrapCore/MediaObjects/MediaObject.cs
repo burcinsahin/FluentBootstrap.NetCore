@@ -1,10 +1,10 @@
-﻿using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Images;
-using FluentBootstrapCore.Links;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Images;
+using FluentBootstrapNCore.Links;
 using System.IO;
 using System.Linq;
 
-namespace FluentBootstrapCore.MediaObjects
+namespace FluentBootstrapNCore.MediaObjects
 {
     public class MediaObject : Tag, IHasLinkExtensions
     {
@@ -22,16 +22,14 @@ namespace FluentBootstrapCore.MediaObjects
         protected override void OnStart(TextWriter writer)
         {
             // Change to a div if no link was provided, otherwise wrap in a div
-            string href = GetAttribute("href");
+            var href = GetAttribute("href");
             if (string.IsNullOrWhiteSpace(href))
-            {
                 TagName = "div";
-            }
             else
             {
                 // Copy media CSS classes to the wrapping div
                 _wrapper = GetHelper().Div().Component;
-                foreach (string mediaClass in CssClasses.Where(x => x.StartsWith("media-")).ToList())
+                foreach (var mediaClass in CssClasses.Where(x => x.StartsWith("media-")).ToList())
                 {
                     _wrapper.AddCss(mediaClass);
                     CssClasses.Remove(mediaClass);
@@ -52,9 +50,7 @@ namespace FluentBootstrapCore.MediaObjects
             base.OnFinish(writer);
 
             if (_wrapper != null)
-            {
                 _wrapper.Finish(writer);
-            }
         }
     }
 }

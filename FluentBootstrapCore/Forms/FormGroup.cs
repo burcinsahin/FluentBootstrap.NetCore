@@ -1,8 +1,11 @@
-﻿using FluentBootstrapCore.Grids;
+﻿using FluentBootstrapNCore.Grids;
+using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 using System.Linq;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     public class FormGroup : Tag, IHasGridColumnExtensions, IFormValidation,
         ICanCreate<ControlLabel>,
@@ -41,17 +44,15 @@ namespace FluentBootstrapCore.Forms
             // Set column classes if we're horizontal       
             if (AutoColumns)
             {
-                ComponentBuilder<BootstrapConfig, FormGroup> builder = GetBuilder(this);
-                Form form = GetComponent<Form>();
-                if ((form != null && form.Horizontal && (!Horizontal.HasValue || Horizontal.Value)) || (Horizontal.HasValue && Horizontal.Value))
+                var builder = GetBuilder(this);
+                var form = GetComponent<Form>();
+                if (form != null && form.Horizontal && (!Horizontal.HasValue || Horizontal.Value) || Horizontal.HasValue && Horizontal.Value)
                 {
-                    int labelWidth = form == null ? Config.DefaultFormLabelWidth : form.DefaultLabelWidth;
+                    var labelWidth = form == null ? Config.DefaultFormLabelWidth : form.DefaultLabelWidth;
 
                     // Set label column class
                     if (_label != null && !_label.CssClasses.Any(x => x.StartsWith("col-")))
-                    {
                         _label.SetColumnClass(Config, "col-md-", labelWidth);
-                    }
 
                     // Add column classes to this (these will get moved to a wrapper later in this method)
                     if (!CssClasses.Any(x => x.StartsWith("col-")))
@@ -60,9 +61,7 @@ namespace FluentBootstrapCore.Forms
 
                         // Also need to add an offset if no label
                         if (_label == null)
-                        {
                             builder.SetMdOffset(labelWidth);
-                        }
                     }
                 }
                 else if (form != null && form.Horizontal)
@@ -75,39 +74,29 @@ namespace FluentBootstrapCore.Forms
 
             // Move any grid column classes to a container class
             if (CssClasses.Any(x => x.StartsWith("col-")))
-            {
                 _columnWrapper = GetHelper().Element("div").AddCss(CssClasses.Where(x => x.StartsWith("col-")).ToArray()).Component;
-            }
             CssClasses.RemoveWhere(x => x.StartsWith("col-"));
 
             base.OnStart(writer);
 
             // Write the column wrapper first if needed
             if (_columnWrapperBeforeLabel && _columnWrapper != null)
-            {
                 _columnWrapper.Start(writer);
-            }
 
             // Write the label
             if (_label != null)
-            {
                 _label.StartAndFinish(writer);
-            }
 
             // Write the column wrapper
             if (!_columnWrapperBeforeLabel && _columnWrapper != null)
-            {
                 _columnWrapper.Start(writer);
-            }
 
             // Add the feedback icon as a final child of either this or the wrapper
             if (Icon != Icon.None)
             {
                 Component icon = GetHelper().Icon(Icon).AddCss(Css.FormControlFeedback).Component;
                 if (_columnWrapper == null)
-                {
                     AddChildAtEnd(icon);
-                }
                 else
                 {
                     _columnWrapper.AddChildAtEnd(icon);

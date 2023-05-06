@@ -1,9 +1,10 @@
-﻿using System;
+﻿using FluentBootstrapNCore.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public abstract class Component
     {
@@ -47,11 +48,11 @@ namespace FluentBootstrapCore
 
             // Get any component override(s)
             ComponentOverride componentOverride = null;
-            Type thisType = GetType();
-            foreach (KeyValuePair<Type, Func<BootstrapConfig, Component, ComponentOverride>> match
+            var thisType = GetType();
+            foreach (var match
                 in Config.ComponentOverrides.Where(x => x.Key.IsAssignableFrom(thisType)))
             {
-                ComponentOverride lastComponentOverride = componentOverride;
+                var lastComponentOverride = componentOverride;
                 componentOverride = match.Value(Config, this);
                 componentOverride.BaseStartAction = OnStart;
                 componentOverride.BaseFinishAction = OnFinish;
@@ -122,9 +123,7 @@ namespace FluentBootstrapCore
         {
             // If we have a parent, it needs to be started
             if (_parent != null)
-            {
                 _parent.Begin(writer);
-            }
 
             Start(writer ?? Config.GetWriter());
         }
@@ -135,9 +134,7 @@ namespace FluentBootstrapCore
 
             // If we have a parent, it needs to be finished
             if (_parent != null)
-            {
                 _parent.End(writer);
-            }
         }
 
         /// <summary>
@@ -148,21 +145,17 @@ namespace FluentBootstrapCore
         public string ToHtml()
         {
             // Write this component out as a string
-            using (StringWriter writer = new StringWriter())
+            using (var writer = new StringWriter())
             {
                 // If we have a parent, it needs to be started
                 if (_parent != null)
-                {
                     _parent.Begin(writer);
-                }
 
                 StartAndFinish(writer);
 
                 // If we have a parent, it needs to be finished
                 if (_parent != null)
-                {
                     _parent.End(writer);
-                }
 
                 return writer.ToString();
             }
@@ -173,25 +166,19 @@ namespace FluentBootstrapCore
         {
             // Only write content once
             if (_started)
-            {
                 return;
-            }
             _started = true;
 
             // Stop now if not rendering
             if (!_render)
-            {
                 return;
-            }
 
             // Note that this component is outputting
             GetOutputStack().Push(this);
 
             // Output the content
             if (_componentOverrides.Count > 0)
-            {
                 _componentOverrides.Peek().OnStart(writer);
-            }
             else
             {
                 OnStart(writer);
@@ -199,9 +186,7 @@ namespace FluentBootstrapCore
 
             // Clear this component from the output stack
             if (GetOutputStack().Pop() != this)
-            {
                 throw new InvalidOperationException("Popped a different Bootstrap component from the output stack while starting (you should never see this).");
-            }
 
             // Write any children
             WriteChildren(_children, writer);
@@ -211,25 +196,21 @@ namespace FluentBootstrapCore
         {
             // Only write content once
             if (_finished)
-            {
                 return;
-            }
             _finished = true;
 
             // Stop now if not rendering
             if (!_render)
-            {
                 return;
-            }
 
             // Write any end children
             WriteChildren(_endChildren, writer);
 
             // Get the stack
-            Stack<Component> stack = GetComponentStack();
+            var stack = GetComponentStack();
 
             // Peek components until we get to this one - the call to Finish() will pop them
-            Component peek = stack.Peek();
+            var peek = stack.Peek();
             while (stack.Count > 0 && peek != this && peek.Implicit)
             {
                 peek.Finish(writer);
@@ -249,9 +230,7 @@ namespace FluentBootstrapCore
 
             // Output the content
             if (_componentOverrides.Count > 0)
-            {
                 _componentOverrides.Peek().OnFinish(writer);
-            }
             else
             {
                 OnFinish(writer);
@@ -259,9 +238,7 @@ namespace FluentBootstrapCore
 
             // Clear this component from the output stack
             if (GetOutputStack().Pop() != this)
-            {
                 throw new InvalidOperationException("Popped a different Bootstrap component from the output stack while finishing (you should never see this).");
-            }
         }
 
         // This is implicit by definition since it's only ever used inside another component to generate content for a child, etc.
@@ -283,23 +260,19 @@ namespace FluentBootstrapCore
         protected virtual void OnFinish(TextWriter writer)
         {
             // Get the stack
-            Stack<Component> stack = GetComponentStack();
+            var stack = GetComponentStack();
 
             // Pop the component from the stack
             if (stack.Count == 0)
-            {
                 throw new InvalidOperationException("Finishing a Bootstrap component with an empty stack (you should never see this).");
-            }
-            Component pop = stack.Pop();
+            var pop = stack.Pop();
             if (pop != this)
-            {
                 throw new InvalidOperationException("Popped a different Bootstrap component from the component stack (you should never see this).");
-            }
         }
 
         private void WriteChildren(List<Component> children, TextWriter writer)
         {
-            foreach (Component child in children)
+            foreach (var child in children)
             {
                 child.StartAndFinish(writer);
             }
@@ -317,22 +290,18 @@ namespace FluentBootstrapCore
         internal void Pop<TComponent>(TextWriter writer)
             where TComponent : Component
         {
-            Stack<Component> stack = GetComponentStack();
+            var stack = GetComponentStack();
 
             // Crawl the stack and queue the components in case an intermediate is not implicit
-            Queue<Component> finish = new Queue<Component>();
+            var finish = new Queue<Component>();
             if (stack.Count > 0)
             {
-                foreach (Component component in stack.Cast<Component>())
+                foreach (var component in stack.Cast<Component>())
                 {
                     if (component == this)
-                    {
                         continue;
-                    }
                     if (!component.Implicit)
-                    {
                         break;
-                    }
                     finish.Enqueue(component);
                     if (typeof(TComponent).IsAssignableFrom(component.GetType()))
                     {
@@ -352,21 +321,17 @@ namespace FluentBootstrapCore
         internal void Pop(Component pop, TextWriter writer)
         {
             if (pop == null || !pop.Implicit)
-            {
                 return;
-            }
-            Stack<Component> stack = GetComponentStack();
+            var stack = GetComponentStack();
 
             // Crawl the stack and queue the components in case an intermediate is not implicit
-            Queue<Component> finish = new Queue<Component>();
+            var finish = new Queue<Component>();
             if (stack.Count > 0)
             {
-                foreach (Component component in stack.Cast<Component>())
+                foreach (var component in stack.Cast<Component>())
                 {
                     if (!component.Implicit)
-                    {
                         break;
-                    }
                     finish.Enqueue(component);
                     if (component == pop)
                     {
@@ -385,19 +350,15 @@ namespace FluentBootstrapCore
         protected TComponent GetComponent<TComponent>(bool onlyParent = false)
             where TComponent : Component
         {
-            Stack<Component> stack = GetComponentStack();
+            var stack = GetComponentStack();
             if (stack.Count == 0)
-            {
                 return null;
-            }
             if (onlyParent)
             {
                 // Need to account for if this component has been added to the stack or not
-                Component parent = stack.Peek();
+                var parent = stack.Peek();
                 if (parent == this)
-                {
                     parent = stack.Skip(1).FirstOrDefault();
-                }
                 return parent as TComponent;
             }
             return stack.Where(x => typeof(TComponent).IsAssignableFrom(x.GetType())).FirstOrDefault() as TComponent;
@@ -415,7 +376,7 @@ namespace FluentBootstrapCore
 
         private Stack<Component> GetStack(object key)
         {
-            Stack<Component> stack = Config.GetItem(key, null) as Stack<Component>;
+            var stack = Config.GetItem(key, null) as Stack<Component>;
             if (stack == null)
             {
                 stack = new Stack<Component>();

@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.ProgressBars
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.ProgressBars
 {
     public class Progress : Tag,
         ICanCreate<ProgressBar>

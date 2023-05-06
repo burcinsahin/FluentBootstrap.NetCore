@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Alerts
 {
     public enum AlertState
     {

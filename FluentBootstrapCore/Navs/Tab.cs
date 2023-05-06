@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Navs
+﻿namespace FluentBootstrapNCore.Navs
 {
     public class Tab : NavLink
     {

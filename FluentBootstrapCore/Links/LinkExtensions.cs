@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Links;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Links
 {
     public static class LinkExtensions
     {
@@ -20,9 +20,7 @@ namespace FluentBootstrapCore
             where TTag : Tag, IHasLinkExtensions
         {
             if (!string.IsNullOrWhiteSpace(href))
-            {
                 builder.Component.MergeAttribute("href", href);
-            }
             return builder;
         }
 

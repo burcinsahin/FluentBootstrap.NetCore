@@ -1,13 +1,13 @@
-﻿using FluentBootstrap.Tests.Web.Models.MvcTests;
+﻿using FluentBootstrapNCore.Tests.Mvc.Models.MvcTests;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FluentBootstrap.Tests.Web.Controllers
+namespace FluentBootstrapNCore.Tests.Mvc.Controllers
 {
     public class MvcTestsController : Controller
     {
         public virtual ActionResult MvcTests(string view)
         {
-            ViewModel model = new ViewModel
+            var model = new ViewModel
             {
                 PropA = "A",
                 PropB = 2,

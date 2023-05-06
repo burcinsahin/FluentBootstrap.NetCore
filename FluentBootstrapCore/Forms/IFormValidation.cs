@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Forms
+﻿namespace FluentBootstrapNCore.Forms
 {
     public interface IFormValidation
     {

@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Typography
+﻿namespace FluentBootstrapNCore.Typography
 {
     public class ListItem : Tag
     {

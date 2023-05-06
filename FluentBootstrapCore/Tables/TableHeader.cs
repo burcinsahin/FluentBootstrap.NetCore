@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace FluentBootstrapCore.Tables
+namespace FluentBootstrapNCore.Tables
 {
     public class TableHeader : TableCell
     {
@@ -16,9 +16,7 @@ namespace FluentBootstrapCore.Tables
             {
                 // ...and make sure the row is in a head section
                 if (GetComponent<TableSection>() == null)
-                {
                     GetHelper().TableHeadSection().Component.Start(writer);
-                }
                 GetHelper().TableRow().Component.Start(writer);
             }
 

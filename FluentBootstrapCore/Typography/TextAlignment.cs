@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Typography
 {
     public enum TextAlignment
     {

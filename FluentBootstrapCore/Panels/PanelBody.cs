@@ -1,7 +1,7 @@
-﻿using FluentBootstrapCore.Html;
+﻿using FluentBootstrapNCore.Html;
 using System.IO;
 
-namespace FluentBootstrapCore.Panels
+namespace FluentBootstrapNCore.Panels
 {
     public class PanelBody : PanelSection
     {
@@ -14,10 +14,10 @@ namespace FluentBootstrapCore.Panels
         protected override void OnStart(TextWriter writer)
         {
             //var accordionPanelGroup = GetComponent<AccordionPanelGroup>();
-            Panel panel = GetComponent<Panel>();
+            var panel = GetComponent<Panel>();
             if (panel.Collapsible)
             {
-                ComponentBuilder<BootstrapConfig, Element> builder = GetHelper().Div()
+                var builder = GetHelper().Div()
                     .AddCss(Css.PanelCollapse, Css.Collapse)
                     .SetId($"{panel.Id}_collapse");
                 if (panel.Expanded) builder.Component.AddCss(Css.In);

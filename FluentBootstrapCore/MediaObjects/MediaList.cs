@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.MediaObjects
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.MediaObjects
 {
     public class MediaList : Tag,
         ICanCreate<Media>

@@ -1,7 +1,8 @@
-﻿using FluentBootstrapCore.Icons;
-using FluentBootstrapCore.Links;
+﻿using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore.Navbars
+namespace FluentBootstrapNCore.Navbars
 {
     public class Brand : Tag, IHasIconExtensions, IHasLinkExtensions, IHasTextContent
     {
@@ -14,9 +15,7 @@ namespace FluentBootstrapCore.Navbars
         {
             // Make sure we're in a header, but only if we're also in a navbar
             if (GetComponent<Navbar>() != null && GetComponent<NavbarHeader>() == null)
-            {
                 GetHelper().NavbarHeader().Component.Start(writer);
-            }
 
             base.OnStart(writer);
         }

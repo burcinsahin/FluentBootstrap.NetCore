@@ -1,9 +1,8 @@
-﻿using FluentBootstrapCore.Forms;
-using FluentBootstrapCore.Mvc.Internals;
+﻿using FluentBootstrapNCore.Forms;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.IO;
 
-namespace FluentBootstrapCore.Mvc.Forms
+namespace FluentBootstrapNCore.Mvc.Forms
 {
     public class ValidationSummary<TModel> : FormControl
     {
@@ -21,16 +20,12 @@ namespace FluentBootstrapCore.Mvc.Forms
             // Output the summary
             var validationSummary = this.GetHtmlHelper<TModel>().ValidationSummary(!IncludePropertyErrors);
             if (validationSummary != null)
-            {
                 writer.Write(validationSummary.ToHtmlString());
-            }
 
             // Indicate to the form that it's been written
-            Form form = GetComponent<Form>();
+            var form = GetComponent<Form>();
             if (form != null)
-            {
                 form.GetOverride<FormOverride<TModel>>().HideValidationSummary = true;
-            }
         }
     }
 }

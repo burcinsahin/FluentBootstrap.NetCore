@@ -1,20 +1,18 @@
-﻿using FluentBootstrapCore.Forms;
-using FluentBootstrapCore.Internals;
-using FluentBootstrapCore.Mvc;
-using FluentBootstrapCore.Mvc.Forms;
-using FluentBootstrapCore.Mvc.Internals;
+﻿using FluentBootstrapNCore.Forms;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Mvc.Forms;
+using FluentBootstrapNCore.Typography;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Mvc.Forms
 {
     public static class MvcFormExtensions
     {
@@ -108,9 +106,7 @@ namespace FluentBootstrapCore
             var controlLabel = GetControlLabel(builder.GetHelper(), expression).GetComponent();
             builder.GetComponent().ControlLabel = controlLabel;
             if (labelAction != null)
-            {
                 labelAction(controlLabel);
-            }
             return builder;
         }
 
@@ -309,10 +305,8 @@ namespace FluentBootstrapCore
             var label = GetControlLabel(modelExpression.Metadata, modelExpression.Name);
             var builder = helper.Select(name, label);
             if (modelExpression.Model != null && !string.IsNullOrEmpty(name))
-            {
                 // Add the model value before adding options so they'll get selected on a match
                 builder.GetComponent().ModelValue = modelExpression.Model.ToString();
-            }
             return builder.AddOptions(options);
         }
 
@@ -327,10 +321,8 @@ namespace FluentBootstrapCore
             var label = GetControlLabel(modelExpression.Metadata, modelExpression.Name);
             var builder = helper.Select(name, label);
             if (modelExpression.Model != null && !string.IsNullOrEmpty(name))
-            {
                 // Add the model value before adding options so they'll get selected on a match
                 builder.GetComponent().ModelValue = modelExpression.Model.ToString();
-            }
             return builder.AddOptions(options);
         }
 
@@ -345,10 +337,8 @@ namespace FluentBootstrapCore
             var label = GetControlLabel(modelExpression.Metadata, modelExpression.Name);
             var builder = helper.Select(name, label);
             if (modelExpression.Model != null && !string.IsNullOrEmpty(name))
-            {
                 // Add the model value before adding options so they'll get selected on a match
                 builder.GetComponent().ModelValue = modelExpression.Model.ToString();
-            }
             return builder.AddOptions(selectList);
         }
 
@@ -381,8 +371,8 @@ namespace FluentBootstrapCore
             var htmlHelper = helper.GetConfig().GetHtmlHelper();
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
-            string name = GetControlName(helper, modelExpression.Name);
-            string label = GetControlLabel(modelExpression.Metadata, modelExpression.Name);
+            var name = GetControlName(helper, modelExpression.Name);
+            var label = GetControlLabel(modelExpression.Metadata, modelExpression.Name);
             return helper.TextArea(name, label, modelExpression.Model, null, rows);
         }
 
@@ -407,9 +397,7 @@ namespace FluentBootstrapCore
         {
             var controlLabel = GetControlLabel(builder.GetHelper(), expression).For(TagBuilder.CreateSanitizedId(builder.GetComponent().GetAttribute("name"), "_")).GetComponent();
             if (labelAction != null)
-            {
                 labelAction(controlLabel);
-            }
             builder.GetComponent().Label = controlLabel;
             return builder;
         }
@@ -442,7 +430,7 @@ namespace FluentBootstrapCore
                 if (label == null)
                 {
                     var chrArray = new char[] { '.' };
-                    label = expressionText.Split(chrArray).Last<string>();
+                    label = expressionText.Split(chrArray).Last();
                 }
             }
             return label;

@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.ListGroups
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.ListGroups
 {
     public class ListGroup : Tag,
         ICanCreate<ListGroupItem>,

@@ -1,10 +1,9 @@
-﻿using FluentBootstrapCore.Mvc.Internals;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.IO;
 using System.Linq.Expressions;
 
-namespace FluentBootstrapCore.Mvc.Forms
+namespace FluentBootstrapNCore.Mvc.Forms
 {
     public class HiddenFor<TModel, TValue> : Component
     {

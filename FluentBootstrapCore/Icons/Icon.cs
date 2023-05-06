@@ -1,7 +1,6 @@
-﻿
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Icons
 {
     public enum Icon
     {

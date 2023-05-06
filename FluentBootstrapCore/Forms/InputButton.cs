@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Buttons;
+﻿using FluentBootstrapNCore.Buttons;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     public class InputButton : FormControl,
         IHasButtonExtensions, IHasButtonStateExtensions, IHasDisabledAttribute,

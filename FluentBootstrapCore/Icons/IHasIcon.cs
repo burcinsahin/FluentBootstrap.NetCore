@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Icons
+﻿namespace FluentBootstrapNCore.Icons
 {
     public interface IHasIconExtensions
     {

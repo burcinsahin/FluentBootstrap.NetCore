@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Images
+﻿namespace FluentBootstrapNCore.Images
 {
     public class Image : ImageBase
     {

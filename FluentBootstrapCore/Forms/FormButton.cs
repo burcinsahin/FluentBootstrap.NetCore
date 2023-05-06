@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Buttons;
+﻿using FluentBootstrapNCore.Buttons;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     // This is like Button except it's derived from FormControl so it includes the form wrapping elements
     public class FormButton : FormControl,

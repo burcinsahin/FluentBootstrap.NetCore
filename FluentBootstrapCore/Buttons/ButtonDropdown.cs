@@ -1,8 +1,10 @@
-﻿using FluentBootstrapCore.Dropdowns;
-using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Icons;
+﻿using FluentBootstrapNCore.Dropdowns;
+using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Misc;
 
-namespace FluentBootstrapCore.Buttons
+namespace FluentBootstrapNCore.Buttons
 {
     public class ButtonDropdown : Tag, IHasIconExtensions, IHasButtonExtensions, IHasButtonStateExtensions, IHasTextContent,
         ICanCreate<DropdownDivider>,
@@ -23,9 +25,7 @@ namespace FluentBootstrapCore.Buttons
             // Add the outer group
             _buttonGroup = GetHelper().ButtonGroup().Component;
             if (Dropup)
-            {
                 _buttonGroup.AddCss(Css.Dropup);
-            }
             _buttonGroup.Start(writer);
 
             // Add the action button if split and copy over button CSS classes
@@ -33,10 +33,10 @@ namespace FluentBootstrapCore.Buttons
             // But only create the split if we actually have some text to put in it
             if (Split && TextContent != null)
             {
-                Button button = GetHelper().Button(TextContent).Component;
+                var button = GetHelper().Button(TextContent).Component;
                 MoveIcons(button);
                 TextContent = null;
-                foreach (string cssClass in CssClasses)
+                foreach (var cssClass in CssClasses)
                 {
                     button.CssClasses.Add(cssClass);
                 }
@@ -46,11 +46,11 @@ namespace FluentBootstrapCore.Buttons
             }
 
             // Create the dropdown button, copy over CSS, add the text and caret, then render
-            Button dropdown = GetHelper().Button(buttonType: ButtonType.Button).Component;
+            var dropdown = GetHelper().Button(buttonType: ButtonType.Button).Component;
             MoveIcons(dropdown);
             dropdown.AddCss(Css.Btn, Css.BtnDefault, Css.DropdownToggle);
             dropdown.MergeAttribute("data-toggle", "dropdown");
-            foreach (string cssClass in CssClasses)
+            foreach (var cssClass in CssClasses)
             {
                 dropdown.CssClasses.Add(cssClass);
             }
@@ -64,7 +64,7 @@ namespace FluentBootstrapCore.Buttons
             }
             else
             {
-                Element element = GetHelper().Element("span").AddCss(Css.SrOnly).Component;
+                var element = GetHelper().Element("span").AddCss(Css.SrOnly).Component;
                 element.AddChild(GetHelper().Content("Toggle Dropdown"));
                 dropdown.AddChild(element);
             }
@@ -81,7 +81,7 @@ namespace FluentBootstrapCore.Buttons
 
         private void MoveIcons(Button button)
         {
-            int icon = Children.FindIndex(x => x is IconSpan);
+            var icon = Children.FindIndex(x => x is IconSpan);
             while (icon != -1)
             {
                 button.AddChild(Children[icon]);

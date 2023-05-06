@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Misc
+﻿namespace FluentBootstrapNCore.Misc
 {
     public class Jumbotron : Tag
     {

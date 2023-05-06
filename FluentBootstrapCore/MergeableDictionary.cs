@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     // This class wraps an IDictionary<string, string> and allows merging key/value pairs
     public class MergeableDictionary
@@ -18,22 +18,18 @@ namespace FluentBootstrapCore
         public void Merge(object values)
         {
             if (values == null)
-            {
                 return;
-            }
             AnonymousObjectToHtmlAttributes(values);
         }
 
         public void Merge<TKey, TValue>(IDictionary<TKey, TValue> dictionary)
         {
             if (dictionary == null)
-            {
                 return;
-            }
-            foreach (KeyValuePair<TKey, TValue> kvp in dictionary)
+            foreach (var kvp in dictionary)
             {
-                string key = Convert.ToString(kvp.Key, CultureInfo.InvariantCulture);
-                string value = Convert.ToString(kvp.Value, CultureInfo.InvariantCulture);
+                var key = Convert.ToString(kvp.Key, CultureInfo.InvariantCulture);
+                var value = Convert.ToString(kvp.Value, CultureInfo.InvariantCulture);
                 Merge(key, value);
             }
         }
@@ -41,13 +37,9 @@ namespace FluentBootstrapCore
         public void Merge(string key, string value)
         {
             if (string.IsNullOrWhiteSpace(key))
-            {
                 return;
-            }
             if (value == null && Dictionary.ContainsKey(key))
-            {
                 Dictionary.Remove(key);
-            }
             else if (value != null)
             {
                 Dictionary[key] = value;
@@ -59,9 +51,7 @@ namespace FluentBootstrapCore
         {
             string value;
             if (Dictionary.TryGetValue(key, out value))
-            {
                 return value;
-            }
             return string.Empty;
         }
 

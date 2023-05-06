@@ -1,16 +1,16 @@
-﻿using FluentBootstrapCore.Breadcrumbs;
-using FluentBootstrapCore.Buttons;
-using FluentBootstrapCore.Dropdowns;
-using FluentBootstrapCore.Internals;
-using FluentBootstrapCore.Links;
-using FluentBootstrapCore.ListGroups;
-using FluentBootstrapCore.MediaObjects;
-using FluentBootstrapCore.Mvc;
-using FluentBootstrapCore.Mvc.Internals;
-using FluentBootstrapCore.Navbars;
-using FluentBootstrapCore.Navs;
-using FluentBootstrapCore.Pagers;
-using FluentBootstrapCore.Paginations;
+﻿using FluentBootstrapNCore.Breadcrumbs;
+using FluentBootstrapNCore.Buttons;
+using FluentBootstrapNCore.Dropdowns;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
+using FluentBootstrapNCore.ListGroups;
+using FluentBootstrapNCore.MediaObjects;
+using FluentBootstrapNCore.Mvc;
+using FluentBootstrapNCore.Navbars;
+using FluentBootstrapNCore.Navs;
+using FluentBootstrapNCore.Pagers;
+using FluentBootstrapNCore.Paginations;
+using FluentBootstrapNCore.Typography;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Mvc
 {
     public static class MvcExtensions
     {
@@ -226,19 +226,19 @@ namespace FluentBootstrapCore
 
         // Typography
 
-        public static ComponentBuilder<MvcBootstrapConfig<TModel>, Typography.List> ListFor<TComponent, TModel, TValue>(
+        public static ComponentBuilder<MvcBootstrapConfig<TModel>, List> ListFor<TComponent, TModel, TValue>(
             this BootstrapHelper<MvcBootstrapConfig<TModel>, TComponent> helper,
             Expression<Func<TModel, IEnumerable<TValue>>> expression, Func<TValue, object> item, ListType listType = ListType.Unstyled)
-            where TComponent : Component, ICanCreate<Typography.List>
+            where TComponent : Component, ICanCreate<List>
         {
             var builder =
-                new ComponentBuilder<MvcBootstrapConfig<TModel>, Typography.List>(helper.GetConfig(), helper.List(listType).GetComponent());
+                new ComponentBuilder<MvcBootstrapConfig<TModel>, List>(helper.GetConfig(), helper.List(listType).GetComponent());
             var htmlHelper = helper.GetConfig().GetHtmlHelper();
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
             if (modelExpression.Model is IEnumerable<TValue> values)
             {
-                foreach (TValue value in values)
+                foreach (var value in values)
                 {
                     builder.AddChild(x => x.ListItem(item(value)));
                 }

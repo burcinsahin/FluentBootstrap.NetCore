@@ -1,10 +1,11 @@
-﻿using FluentBootstrapCore.Alerts;
-using FluentBootstrapCore.Badges;
-using FluentBootstrapCore.Icons;
-using FluentBootstrapCore.Navbars;
+﻿using FluentBootstrapNCore.Alerts;
+using FluentBootstrapNCore.Badges;
+using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Navbars;
 using System.IO;
 
-namespace FluentBootstrapCore.Links
+namespace FluentBootstrapNCore.Links
 {
     public class Link : Tag, IHasIconExtensions, IHasLinkExtensions, IHasTextContent,
         ICanCreate<Badge>
@@ -19,15 +20,11 @@ namespace FluentBootstrapCore.Links
         {
             // Adjust the link style if we're in a navbar
             if (GetComponent<Navbar>() != null)
-            {
                 CssClasses.Add(Css.NavbarLink);
-            }
 
             // Adjust the link style if we're in an alert
             if (GetComponent<Alert>() != null)
-            {
                 CssClasses.Add(Css.AlertLink);
-            }
 
             base.OnStart(writer);
         }

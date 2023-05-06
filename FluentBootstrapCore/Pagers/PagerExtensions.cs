@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Pagers;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Pagers
 {
     public static class PagerExtensions
     {

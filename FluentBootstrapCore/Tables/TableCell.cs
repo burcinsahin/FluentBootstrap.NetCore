@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Tables
+﻿namespace FluentBootstrapNCore.Tables
 {
     public abstract class TableCell : Tag, IHasTableStateExtensions
     {

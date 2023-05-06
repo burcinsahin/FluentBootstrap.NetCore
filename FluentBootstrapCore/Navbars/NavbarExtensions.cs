@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Navbars;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Navbars
 {
     public static class NavbarExtensions
     {

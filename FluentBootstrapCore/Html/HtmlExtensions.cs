@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Html;
+﻿using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Html
 {
     public static class HtmlExtensions
     {

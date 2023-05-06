@@ -1,6 +1,7 @@
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 
-namespace FluentBootstrapCore.Tables
+namespace FluentBootstrapNCore.Tables
 {
     public abstract class TableSection : Tag,
         ICanCreate<TableRow>

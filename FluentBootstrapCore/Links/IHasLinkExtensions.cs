@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Links
+﻿namespace FluentBootstrapNCore.Links
 {
     public interface IHasLinkExtensions
     {

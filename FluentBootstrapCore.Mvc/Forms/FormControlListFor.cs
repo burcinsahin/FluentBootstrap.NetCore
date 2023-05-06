@@ -1,12 +1,11 @@
-﻿using FluentBootstrapCore.Internals;
-using FluentBootstrapCore.Mvc.Internals;
+﻿using FluentBootstrapNCore.Typography;
 using Microsoft.AspNetCore.Html;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq.Expressions;
 
-namespace FluentBootstrapCore.Mvc.Forms
+namespace FluentBootstrapNCore.Mvc.Forms
 {
     public class FormControlListFor<TModel, TValue> : FormControlForBase<TModel, IEnumerable<TValue>>
     {
@@ -32,7 +31,7 @@ namespace FluentBootstrapCore.Mvc.Forms
 
             // Iterate
             var list = this.GetHelper<TModel>().List(_listType);
-            foreach (TValue value in values)
+            foreach (var value in values)
             {
                 list.AddChild(x => x.ListItem(new HtmlString(
                     (AddHidden ? this.GetHelper<TModel>().HiddenFor(_ => value).ToHtmlString() : string.Empty)
@@ -55,10 +54,10 @@ namespace FluentBootstrapCore.Mvc.Forms
 
             // Iterate
             var list = this.GetHelper<TModel>().List(_listType);
-            int c = 0;
-            foreach (TValue value in values)
+            var c = 0;
+            foreach (var value in values)
             {
-                list.AddChild(x => x.ListItem(new HtmlString(GetEditor(this.GetHtmlHelper<TModel>().EditorFor(_ => value, TemplateName,"", AdditionalViewData).ToHtmlString()))));
+                list.AddChild(x => x.ListItem(new HtmlString(GetEditor(this.GetHtmlHelper<TModel>().EditorFor(_ => value, TemplateName, "", AdditionalViewData).ToHtmlString()))));
                 c++;
             }
             list.GetComponent().StartAndFinish(writer);

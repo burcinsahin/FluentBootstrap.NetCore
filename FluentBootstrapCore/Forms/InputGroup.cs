@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Forms
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Forms
 {
     public class InputGroup : Tag,
         ICanCreate<InputGroupAddon>,

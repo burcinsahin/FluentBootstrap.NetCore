@@ -1,6 +1,7 @@
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 
-namespace FluentBootstrapCore.Tables
+namespace FluentBootstrapNCore.Tables
 {
     public class TableRow : Tag, IHasTableStateExtensions,
         ICanCreate<TableCell>
@@ -19,7 +20,7 @@ namespace FluentBootstrapCore.Tables
             // Make sure we're in a section, but only if we're also in a table
             if (GetComponent<Table>() != null)
             {
-                TableSection tableSection = GetComponent<TableSection>();
+                var tableSection = GetComponent<TableSection>();
                 if (HeadRow)
                 {
                     if (tableSection != null && !(tableSection is TableHeadSection) && tableSection.Implicit)
@@ -28,9 +29,7 @@ namespace FluentBootstrapCore.Tables
                         tableSection = null;
                     }
                     if (tableSection == null)
-                    {
                         GetHelper().TableHeadSection().Component.Start(writer);
-                    }
                 }
                 else
                 {
@@ -40,9 +39,7 @@ namespace FluentBootstrapCore.Tables
                         tableSection = null;
                     }
                     if (tableSection == null)
-                    {
                         GetHelper().TableBodySection().Component.Start(writer);
-                    }
                 }
             }
 

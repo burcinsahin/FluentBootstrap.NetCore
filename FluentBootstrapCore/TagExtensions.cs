@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Html;
+﻿using FluentBootstrapNCore.Interfaces;
+using Microsoft.AspNetCore.Html;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public static class TagExtensions
     {
@@ -89,17 +90,13 @@ namespace FluentBootstrapCore
                 // Make sure that this isn't a component
                 var contentBuilder = content as ComponentBuilder;
                 if (contentBuilder != null)
-                {
                     builder.Component.AddChild(contentBuilder.GetComponent());
-                }
 
                 // Now check if it's an IHtmlContent
                 string str;
                 var htmlString = content as IHtmlContent;
                 if (htmlString != null)
-                {
                     str = htmlString.ToHtmlString();
-                }
                 else
                 {
                     // Just convert to a string using the standard conversion logic
@@ -125,17 +122,13 @@ namespace FluentBootstrapCore
                 // Make sure that this isn't a component
                 var contentBuilder = content as ComponentBuilder;
                 if (contentBuilder != null)
-                {
                     builder.Component.AddChildAtEnd(contentBuilder.GetComponent());
-                }
 
                 // Now check if it's an IHtmlContent
                 string str;
                 var htmlString = content as IHtmlContent;
                 if (htmlString != null)
-                {
                     str = htmlString.ToHtmlString();
-                }
                 else
                 {
                     // Just convert to a string using the standard conversion logic

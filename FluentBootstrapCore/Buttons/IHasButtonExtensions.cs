@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Buttons
+﻿namespace FluentBootstrapNCore.Buttons
 {
     public interface IHasButtonExtensions
     {

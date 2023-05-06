@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Wells
 {
     public enum WellSize
     {

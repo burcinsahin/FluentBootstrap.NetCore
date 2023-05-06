@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Buttons;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Buttons
 {
     public static class ButtonExtensions
     {
@@ -42,9 +43,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
         {
             if (vertical)
-            {
                 builder.Component.ToggleCss(Css.BtnGroupVertical, true, Css.BtnGroup);
-            }
             else
             {
                 builder.Component.ToggleCss(Css.BtnGroup, true, Css.BtnGroupVertical);

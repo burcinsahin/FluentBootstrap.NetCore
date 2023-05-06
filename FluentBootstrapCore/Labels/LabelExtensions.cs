@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Labels;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Labels
 {
     public static class LabelExtensions
     {

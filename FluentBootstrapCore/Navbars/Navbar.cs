@@ -1,8 +1,10 @@
-﻿using FluentBootstrapCore.Dropdowns;
-using FluentBootstrapCore.Grids;
+﻿using FluentBootstrapNCore.Dropdowns;
+using FluentBootstrapNCore.Grids;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Navbars;
 using System.IO;
 
-namespace FluentBootstrapCore.Navbars
+namespace FluentBootstrapNCore.Navbars
 {
     public class Navbar : Tag,
         ICanCreate<NavbarHeader>,
@@ -39,9 +41,7 @@ namespace FluentBootstrapCore.Navbars
         protected override void OnFinish(TextWriter writer)
         {
             if (!HasHeader)
-            {
                 GetHelper().NavbarHeader().Component.StartAndFinish(writer);
-            }
 
             _container.Finish(writer);
 

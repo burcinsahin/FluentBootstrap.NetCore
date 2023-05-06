@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace FluentBootstrapCore.Images
+namespace FluentBootstrapNCore.Images
 {
     public class Placeholder : ImageBase
     {
@@ -24,31 +24,23 @@ namespace FluentBootstrapCore.Images
         protected override void OnStart(TextWriter writer)
         {
             // Build the src
-            StringBuilder src = new StringBuilder("http://placehold.it/" + Width.ToString());
+            var src = new StringBuilder("http://placehold.it/" + Width.ToString());
             if (Height != null)
-            {
                 src.Append("x" + Height.ToString());
-            }
             if (!string.IsNullOrWhiteSpace(BackgroundColor))
             {
                 src.Append("/" + BackgroundColor.Replace("#", ""));
                 if (!string.IsNullOrWhiteSpace(TextColor))
-                {
                     src.Append("/" + TextColor.Replace("#", ""));
-                }
             }
             else if (!string.IsNullOrWhiteSpace(TextColor))
             {
                 throw new InvalidOperationException("BackgroundColor must be specified if TextColor is specified.");
             }
             if (!string.IsNullOrWhiteSpace(Format))
-            {
                 src.Append("." + Format);
-            }
             if (!string.IsNullOrWhiteSpace(Text))
-            {
                 src.Append("&text=" + Text.Replace(' ', '+'));
-            }
             MergeAttribute("src", src.ToString());
 
             base.OnStart(writer);

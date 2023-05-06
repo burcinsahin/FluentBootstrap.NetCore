@@ -1,15 +1,10 @@
-﻿using FluentBootstrapCore.Mvc;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System;
-using System.IO;
-using System.Reflection.Metadata;
-using System.Text.Encodings.Web;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Mvc
 {
     public static class HtmlHelperExtensions
     {

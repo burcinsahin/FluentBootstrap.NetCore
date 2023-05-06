@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace FluentBootstrapCore.Mvc.Forms
+namespace FluentBootstrapNCore.Mvc.Forms
 {
     public class FormControlFor<TModel, TValue> : FormControlForBase<TModel, TValue>
     {

@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Tables;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Tables
 {
     public static class TableExtensions
     {
@@ -81,8 +81,8 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TComponent : Component, ICanCreate<TableRow>
         {
-            ComponentBuilder<TConfig, TableRow> builder = new ComponentBuilder<TConfig, TableRow>(helper.Config, new TableRow(helper) { HeadRow = true });
-            foreach (object c in content)
+            var builder = new ComponentBuilder<TConfig, TableRow>(helper.Config, new TableRow(helper) { HeadRow = true });
+            foreach (var c in content)
             {
                 builder.AddChild(x => x.TableHeader().AddContent(c));
             }
@@ -93,8 +93,8 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TComponent : Component, ICanCreate<TableRow>
         {
-            ComponentBuilder<TConfig, TableRow> builder = new ComponentBuilder<TConfig, TableRow>(helper.Config, new TableRow(helper));
-            foreach (object c in content)
+            var builder = new ComponentBuilder<TConfig, TableRow>(helper.Config, new TableRow(helper));
+            foreach (var c in content)
             {
                 builder.AddChild(x => x.TableData().AddContent(c));
             }

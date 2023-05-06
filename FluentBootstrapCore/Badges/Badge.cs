@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Badges
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Badges
 {
     public class Badge : Tag, IHasTextContent
     {

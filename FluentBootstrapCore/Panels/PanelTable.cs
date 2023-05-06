@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Panels
+﻿namespace FluentBootstrapNCore.Panels
 {
     public class PanelTable : PanelSection
     {

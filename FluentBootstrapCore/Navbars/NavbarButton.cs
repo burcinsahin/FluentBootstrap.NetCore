@@ -1,8 +1,9 @@
-﻿using FluentBootstrapCore.Buttons;
-using FluentBootstrapCore.Icons;
+﻿using FluentBootstrapNCore.Buttons;
+using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 
-namespace FluentBootstrapCore.Navbars
+namespace FluentBootstrapNCore.Navbars
 {
     public class NavbarButton : Tag, IHasIconExtensions, IHasButtonExtensions, IHasButtonStateExtensions,
         IHasDisabledAttribute, IHasTextContent, IHasValueAttribute, INavbarComponent
@@ -23,9 +24,7 @@ namespace FluentBootstrapCore.Navbars
 
                 // Make sure we're in a collapse
                 if (GetComponent<NavbarCollapse>() == null)
-                {
                     GetHelper().NavbarCollapse().Component.Start(writer);
-                }
             }
 
             base.OnStart(writer);

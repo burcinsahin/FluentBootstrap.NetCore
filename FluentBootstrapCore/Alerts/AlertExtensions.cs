@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Alerts;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Alerts
 {
     public static class AlertExtensions
     {

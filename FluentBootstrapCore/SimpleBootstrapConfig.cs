@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public class SimpleBootstrapConfig : BootstrapConfig
     {

@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Breadcrumbs
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Breadcrumbs
 {
     public class Breadcrumb : Tag,
         ICanCreate<Crumb>

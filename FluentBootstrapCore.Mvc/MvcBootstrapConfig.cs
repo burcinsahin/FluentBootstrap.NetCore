@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.IO;
 
-namespace FluentBootstrapCore.Mvc
+namespace FluentBootstrapNCore.Mvc
 {
     public class MvcBootstrapConfig<TModel> : BootstrapConfig
     {
@@ -31,9 +31,7 @@ namespace FluentBootstrapCore.Mvc
         protected override object GetItem(object key, object defaultValue)
         {
             if (HtmlHelper.ViewContext.HttpContext.Items.ContainsKey(key))
-            {
                 return HtmlHelper.ViewContext.HttpContext.Items[key];
-            }
             return defaultValue;
         }
 

@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Breadcrumbs;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Breadcrumbs
 {
     public static class BreadcrumbExtensions
     {

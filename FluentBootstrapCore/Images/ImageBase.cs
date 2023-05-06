@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Links;
+﻿using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore.Images
+namespace FluentBootstrapNCore.Images
 {
     public abstract class ImageBase : Tag, IHasLinkExtensions
     {
@@ -14,7 +14,7 @@ namespace FluentBootstrapCore.Images
 
         protected override void OnStart(System.IO.TextWriter writer)
         {
-            string href = GetAttribute("href");
+            var href = GetAttribute("href");
             if (!string.IsNullOrWhiteSpace(href))
             {
                 PrettyPrint = false;
@@ -31,9 +31,7 @@ namespace FluentBootstrapCore.Images
             base.OnFinish(writer);
 
             if (_link != null)
-            {
                 _link.Finish(writer);
-            }
         }
     }
 }

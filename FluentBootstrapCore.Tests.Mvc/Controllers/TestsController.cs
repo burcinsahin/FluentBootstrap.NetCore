@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace FluentBootstrap.Tests.Web.Controllers
+namespace FluentBootstrapNCore.Tests.Mvc.Controllers
 {
     public class TestsController : Controller
     {

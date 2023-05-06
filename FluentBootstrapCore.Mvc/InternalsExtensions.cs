@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace FluentBootstrapCore.Mvc.Internals
+namespace FluentBootstrapNCore.Mvc
 {
     public static class InternalsExtensions
     {

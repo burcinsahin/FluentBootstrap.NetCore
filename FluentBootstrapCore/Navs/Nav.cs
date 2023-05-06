@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Dropdowns;
+﻿using FluentBootstrapNCore.Dropdowns;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.Navs
+namespace FluentBootstrapNCore.Navs
 {
     public abstract class Nav : Tag,
         ICanCreate<Dropdown>

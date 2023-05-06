@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Images;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Images
 {
     public static class ImageExtensions
     {

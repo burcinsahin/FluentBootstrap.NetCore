@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Navbars
+﻿namespace FluentBootstrapNCore.Navbars
 {
     public interface INavbarComponent
     {

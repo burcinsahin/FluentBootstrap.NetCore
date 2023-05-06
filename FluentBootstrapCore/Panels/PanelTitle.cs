@@ -1,8 +1,9 @@
-﻿using FluentBootstrapCore.Links;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 using System;
 using System.IO;
 
-namespace FluentBootstrapCore.Panels
+namespace FluentBootstrapNCore.Panels
 {
     public class PanelTitle : Tag, IHasTextContent, ICanCreate<Link>
     {
@@ -10,9 +11,7 @@ namespace FluentBootstrapCore.Panels
             : base(helper, "h" + headingLevel, Css.PanelTitle)
         {
             if (headingLevel < 1 || headingLevel > 6)
-            {
                 throw new ArgumentOutOfRangeException(nameof(headingLevel));
-            }
             TextContent = text;
         }
 
@@ -20,22 +19,18 @@ namespace FluentBootstrapCore.Panels
         {
             // Make sure we're in a PanelHeading
             if (GetComponent<PanelHeading>() == null)
-            {
                 GetHelper().PanelHeading().Component.Start(writer);
-            }
 
-            Panel panel = GetComponent<Panel>();
+            var panel = GetComponent<Panel>();
             if (panel != null && panel.Collapsible)
             {
-                ComponentBuilder<BootstrapConfig, Link> link = GetHelper()
+                var link = GetHelper()
                     .Link(TextContent, $"#{panel.Id}_collapse")
                     .AddAttribute("data-toggle", "collapse");
 
-                PanelGroup panelGroup = GetComponent<PanelGroup>();
+                var panelGroup = GetComponent<PanelGroup>();
                 if (panelGroup != null && panelGroup.Accordion)
-                {
                     link.AddAttribute("data-parent", $"#{panelGroup.Id}");
-                }
 
                 AddChild(link);
                 TextContent = null;

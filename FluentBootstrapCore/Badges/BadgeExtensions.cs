@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Badges;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Badges
 {
     public static class BadgeExtensions
     {

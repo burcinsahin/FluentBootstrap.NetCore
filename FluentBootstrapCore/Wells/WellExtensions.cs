@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Wells;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Wells
 {
     public static class WellExtensions
     {

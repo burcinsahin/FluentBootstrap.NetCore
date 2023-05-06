@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Grids
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Grids
 {
     public class GridRow : Tag,
         ICanCreate<GridColumn>

@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Buttons
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Buttons
 {
     public class ButtonToolbar : Tag,
         ICanCreate<ButtonGroup>

@@ -1,7 +1,7 @@
-﻿using FluentBootstrapCore.Forms;
+﻿using FluentBootstrapNCore.Forms;
 using System.IO;
 
-namespace FluentBootstrapCore.Navbars
+namespace FluentBootstrapNCore.Navbars
 {
     public class NavbarForm : Form, INavbarComponent
     {
@@ -20,9 +20,7 @@ namespace FluentBootstrapCore.Navbars
 
                 // Make sure we're in a collapse
                 if (GetComponent<NavbarCollapse>() == null)
-                {
                     GetHelper().NavbarCollapse().Component.Start(writer);
-                }
             }
 
             base.OnStart(writer);

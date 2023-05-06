@@ -1,8 +1,9 @@
-﻿using FluentBootstrapCore.Badges;
-using FluentBootstrapCore.Icons;
+﻿using FluentBootstrapNCore.Badges;
+using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 
-namespace FluentBootstrapCore.Buttons
+namespace FluentBootstrapNCore.Buttons
 {
     public class Button : Tag,
         IHasIconExtensions, IHasButtonExtensions, IHasButtonStateExtensions,
@@ -21,7 +22,7 @@ namespace FluentBootstrapCore.Buttons
         {
             // Fix for justified buttons in a group (need to surround them with an extra button group)
             // See https://github.com/twbs/bootstrap/issues/12476
-            ButtonGroup buttonGroup = GetComponent<ButtonGroup>(true);
+            var buttonGroup = GetComponent<ButtonGroup>(true);
             if (buttonGroup != null && buttonGroup.CssClasses.Contains(Css.BtnGroupJustified))
             {
                 _buttonGroup = GetHelper().ButtonGroup().Component;
@@ -36,9 +37,7 @@ namespace FluentBootstrapCore.Buttons
             base.OnFinish(writer);
 
             if (_buttonGroup != null)
-            {
                 _buttonGroup.Finish(writer);
-            }
         }
     }
 }

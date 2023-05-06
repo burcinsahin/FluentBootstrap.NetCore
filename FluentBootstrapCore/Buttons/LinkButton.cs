@@ -1,7 +1,8 @@
-﻿using FluentBootstrapCore.Icons;
-using FluentBootstrapCore.Links;
+﻿using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore.Buttons
+namespace FluentBootstrapNCore.Buttons
 {
     public class LinkButton : Tag,
         IHasIconExtensions, IHasLinkExtensions, IHasButtonExtensions, IHasButtonStateExtensions, IHasTextContent

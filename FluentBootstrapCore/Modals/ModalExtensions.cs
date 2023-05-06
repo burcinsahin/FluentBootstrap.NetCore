@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Modals;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Modals
 {
     public static class ModalExtensions
     {
@@ -8,11 +8,9 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TComponent : Component, ICanCreate<Modal>
         {
-            ComponentBuilder<TConfig, Modal> builder = new ComponentBuilder<TConfig, Modal>(helper.Config, new Modal(helper));
+            var builder = new ComponentBuilder<TConfig, Modal>(helper.Config, new Modal(helper));
             if (!string.IsNullOrWhiteSpace(title))
-            {
                 builder.AddChild(x => x.ModalHeading().AddChild(y => y.ModalTitle(title)));
-            }
             return builder;
         }
 

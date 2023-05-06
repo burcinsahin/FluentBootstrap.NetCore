@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore
+﻿namespace FluentBootstrapNCore.Interfaces
 {
     public interface IHasValueAttribute
     {

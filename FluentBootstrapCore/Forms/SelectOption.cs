@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Interfaces;
+using System.IO;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     public class SelectOption : Tag, IHasTextContent
     {
@@ -15,14 +16,10 @@ namespace FluentBootstrapCore.Forms
         protected override void OnStart(TextWriter writer)
         {
             if (Value != null)
-            {
                 MergeAttribute("value", Value);
-            }
 
             if (Selected)
-            {
                 MergeAttribute("selected", "selected");
-            }
 
             base.OnStart(writer);
         }

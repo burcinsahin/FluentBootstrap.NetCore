@@ -1,8 +1,9 @@
-﻿using FluentBootstrapCore.Paginations;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Paginations
 {
     public static class PaginationExtensions
     {
@@ -69,12 +70,10 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
         {
             if (firstPageNumber.HasValue)
-            {
                 builder.Component.AutoPageNumber = firstPageNumber.Value - 1;
-            }
-            foreach (KeyValuePair<string, string> textAndHref in textAndHrefs)
+            foreach (var textAndHref in textAndHrefs)
             {
-                KeyValuePair<string, string> localTextAndHref = textAndHref;  // avoid access in closure
+                var localTextAndHref = textAndHref;  // avoid access in closure
                 builder.Component.AutoPageNumber++;
                 builder.AddChild(x => x.PageNum(localTextAndHref.Key ?? builder.Component.AutoPageNumber.ToString(), localTextAndHref.Value)
                     .SetActive(builder.Component.AutoPageNumber == activePageNumber)

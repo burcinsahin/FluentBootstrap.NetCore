@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Grids;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Grids
 {
     public static class GridExtensions
     {

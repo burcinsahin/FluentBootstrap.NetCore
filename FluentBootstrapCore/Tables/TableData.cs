@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace FluentBootstrapCore.Tables
+namespace FluentBootstrapNCore.Tables
 {
     public class TableData : TableCell
     {
@@ -19,9 +19,7 @@ namespace FluentBootstrapCore.Tables
 
                 // Make sure we're in a row
                 if (GetComponent<TableRow>() == null)
-                {
                     GetHelper().TableRow().Component.Start(writer);
-                }
             }
 
             base.OnStart(writer);

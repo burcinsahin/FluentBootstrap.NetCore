@@ -1,8 +1,9 @@
-﻿using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Links;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 using System.IO;
 
-namespace FluentBootstrapCore.Pagers
+namespace FluentBootstrapNCore.Pagers
 {
     public class Page : Tag, IHasLinkExtensions, IHasTextContent
     {
@@ -21,9 +22,7 @@ namespace FluentBootstrapCore.Pagers
             // Create the list item wrapper
             _listItem = GetHelper().Element("li").Component;
             if (Disabled)
-            {
                 _listItem.AddCss(Css.Disabled);
-            }
             _listItem.ToggleCss(Alignment);
             _listItem.Start(writer);
 

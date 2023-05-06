@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Dropdowns
+﻿namespace FluentBootstrapNCore.Dropdowns
 {
     public class DropdownDivider : Tag
     {

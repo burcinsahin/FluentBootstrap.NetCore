@@ -1,7 +1,7 @@
-﻿using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Typography;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Typography
 {
     public static class TypographyExtensions
     {
@@ -12,9 +12,7 @@ namespace FluentBootstrapCore
             where TComponent : Component, ICanCreate<Heading>
         {
             if (size < 1)
-            {
                 size = 1;
-            }
             else if (size > 6)
             {
                 size = 6;
@@ -284,11 +282,11 @@ namespace FluentBootstrapCore
 
         // List
 
-        public static ComponentBuilder<TConfig, Typography.List> List<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper, ListType listType = ListType.Unstyled)
+        public static ComponentBuilder<TConfig, List> List<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper, ListType listType = ListType.Unstyled)
             where TConfig : BootstrapConfig
-            where TComponent : Component, ICanCreate<Typography.List>
+            where TComponent : Component, ICanCreate<List>
         {
-            return new ComponentBuilder<TConfig, Typography.List>(helper.Config, new Typography.List(helper, listType));
+            return new ComponentBuilder<TConfig, List>(helper.Config, new List(helper, listType));
         }
 
         public static ComponentBuilder<TConfig, ListItem> ListItem<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper, object content = null)

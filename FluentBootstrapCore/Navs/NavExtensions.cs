@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Navs;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Navs
 {
     public static class NavExtensions
     {

@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Dropdowns
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Dropdowns
 {
     public class DropdownHeader : Tag, IHasTextContent
     {

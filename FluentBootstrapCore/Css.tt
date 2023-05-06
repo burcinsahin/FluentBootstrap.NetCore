@@ -18,7 +18,7 @@
 
 	public void Process()
 	{
-		WriteLine("namespace FluentBootstrapCore");
+		WriteLine("namespace FluentBootstrapNCore");
 		WriteLine("{");
 		WriteLine("\tpublic static class Css");
 		WriteLine("\t{");

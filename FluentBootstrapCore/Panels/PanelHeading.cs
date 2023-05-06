@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Panels
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Panels
 {
     public class PanelHeading : PanelSection,
         ICanCreate<PanelTitle>

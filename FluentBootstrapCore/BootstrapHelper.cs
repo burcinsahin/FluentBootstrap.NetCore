@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public abstract class BootstrapHelper
     {

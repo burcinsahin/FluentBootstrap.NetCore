@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace FluentBootstrapCore.Tests.Web.Controllers
+namespace FluentBootstrapNCore.Tests.Mvc.Controllers
 {
     public class HomeController : Controller
     {

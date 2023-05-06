@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore
+﻿namespace FluentBootstrapNCore
 {
     public static class ComponentExtensions
     {

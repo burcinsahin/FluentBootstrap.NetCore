@@ -1,8 +1,8 @@
-﻿using FluentBootstrapCore.Images;
-using FluentBootstrapCore.Links;
+﻿using FluentBootstrapNCore.Images;
+using FluentBootstrapNCore.Links;
 using System.IO;
 
-namespace FluentBootstrapCore.Thumbnails
+namespace FluentBootstrapNCore.Thumbnails
 {
     public class Thumbnail : Tag, IHasLinkExtensions
     {
@@ -20,7 +20,7 @@ namespace FluentBootstrapCore.Thumbnails
         protected override void OnStart(TextWriter writer)
         {
             // Remove the thumbnail class if in a ThumbnailContainer
-            bool inContainer = false;
+            var inContainer = false;
             if (GetComponent<ThumbnailContainer>(true) != null)
             {
                 RemoveCss(Css.Thumbnail);
@@ -28,14 +28,12 @@ namespace FluentBootstrapCore.Thumbnails
             }
 
             // Change to a div if no link was provided (or don't output at all if in a container)
-            string href = GetAttribute("href");
+            var href = GetAttribute("href");
             if (string.IsNullOrWhiteSpace(href))
             {
                 TagName = "div";
                 if (inContainer)
-                {
                     _suppressOuterTag = true;
-                }
             }
 
             base.OnStart(_suppressOuterTag ? new SuppressOutputWriter() : writer);

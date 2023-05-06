@@ -1,7 +1,8 @@
-﻿using FluentBootstrapCore.Buttons;
-using FluentBootstrapCore.Dropdowns;
+﻿using FluentBootstrapNCore.Buttons;
+using FluentBootstrapNCore.Dropdowns;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     public class InputGroupButton : Tag,
         ICanCreate<Button>,

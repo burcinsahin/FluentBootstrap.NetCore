@@ -1,7 +1,8 @@
-﻿using System;
+﻿using FluentBootstrapNCore.Interfaces;
+using System;
 using System.IO;
 
-namespace FluentBootstrapCore.Panels
+namespace FluentBootstrapNCore.Panels
 {
     /// <summary>
     /// Component to group panels and add accordion ability if desired
@@ -20,9 +21,7 @@ namespace FluentBootstrapCore.Panels
         protected override void OnStart(TextWriter writer)
         {
             if (Accordion && string.IsNullOrWhiteSpace(Id))
-            {
                 GetBuilder(this).SetId($"accordion{DateTime.Now.Ticks}");
-            }
             base.OnStart(writer);
         }
         #endregion

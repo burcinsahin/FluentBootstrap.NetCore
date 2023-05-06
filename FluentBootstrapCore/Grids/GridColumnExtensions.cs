@@ -1,6 +1,4 @@
-﻿using FluentBootstrapCore.Grids;
-
-namespace FluentBootstrapCore
+﻿namespace FluentBootstrapNCore.Grids
 {
     public static class GridColumnExtensions
     {
@@ -130,13 +128,9 @@ namespace FluentBootstrapCore
             if (value != null)
             {
                 if (value < 0)
-                {
                     value = 1;
-                }
                 if (value > config.GridColumns)
-                {
                     value = config.GridColumns;
-                }
                 tag.CssClasses.Add(prefix + value.Value);
             }
         }

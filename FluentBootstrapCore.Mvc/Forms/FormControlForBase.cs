@@ -1,15 +1,13 @@
-﻿using FluentBootstrapCore.Forms;
-using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Internals;
-using FluentBootstrapCore.Mvc.Internals;
+﻿using FluentBootstrapNCore.Forms;
+using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Mvc.Forms;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System;
 using System.IO;
 using System.Linq.Expressions;
 
-namespace FluentBootstrapCore.Mvc.Forms
+namespace FluentBootstrapNCore.Mvc.Forms
 {
     public abstract class FormControlForBase : FormControl
     {
@@ -45,9 +43,7 @@ namespace FluentBootstrapCore.Mvc.Forms
             base.OnStart(writer);
 
             if (_editor)
-            {
                 WriteEditor(writer);
-            }
             else
             {
                 WriteDisplay(writer);
@@ -55,9 +51,7 @@ namespace FluentBootstrapCore.Mvc.Forms
 
             // Add the validation message if requested
             if (AddValidationMessage)
-            {
                 writer.Write(this.GetHtmlHelper<TModel>().ValidationMessageFor(Expression, "", null, "").ToHtmlString());//TODO:???
-            }
         }
 
         protected override void OnFinish(TextWriter writer)
@@ -70,7 +64,7 @@ namespace FluentBootstrapCore.Mvc.Forms
                 var metadata = expressionProvider.CreateModelExpression(htmlHelper.ViewData, Expression).Metadata;
                 if (!string.IsNullOrWhiteSpace(metadata.Description))
                 {
-                    Element element = GetHelper().Element("p").AddCss(Css.HelpBlock).GetComponent();
+                    var element = GetHelper().Element("p").AddCss(Css.HelpBlock).GetComponent();
                     element.AddChild(GetHelper().Content(metadata.Description));
                     element.StartAndFinish(writer);
                 }
@@ -83,9 +77,7 @@ namespace FluentBootstrapCore.Mvc.Forms
         {
             //// Insert the hidden control if requested
             if (AddHidden)
-            {
                 this.GetHelper<TModel>().HiddenFor(Expression).GetComponent().StartAndFinish(writer);
-            }
 
             writer.Write(this.GetHtmlHelper<TModel>().DisplayFor(Expression, TemplateName, AdditionalViewData));
         }
@@ -101,15 +93,15 @@ namespace FluentBootstrapCore.Mvc.Forms
         {
             if (AddFormControlClass)
             {
-                HtmlDocument doc = new HtmlDocument();
+                var doc = new HtmlDocument();
                 doc.LoadHtml(html);
-                bool addedFormControl = false;
-                foreach (HtmlNode node in doc.DocumentNode.ChildNodes)
+                var addedFormControl = false;
+                foreach (var node in doc.DocumentNode.ChildNodes)
                 {
-                    if ((node.Name == "input" && (!node.Attributes.Contains("type")
-                        || (node.Attributes["type"].Value != "hidden"
+                    if (node.Name == "input" && (!node.Attributes.Contains("type")
+                        || node.Attributes["type"].Value != "hidden"
                         && node.Attributes["type"].Value != "radio"
-                        && node.Attributes["type"].Value != "checkbox")))
+                        && node.Attributes["type"].Value != "checkbox")
                         || node.Name == "textarea"
                         || node.Name == "select")
                     {
@@ -127,9 +119,7 @@ namespace FluentBootstrapCore.Mvc.Forms
                     }
                 }
                 if (addedFormControl)
-                {
                     html = doc.DocumentNode.OuterHtml;
-                }
             }
             return html;
         }

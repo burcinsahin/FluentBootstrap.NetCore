@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Icons;
+﻿using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.Html
+namespace FluentBootstrapNCore.Html
 {
     public class Span : Tag, IHasTextContent, IHasIconExtensions, IHasTitleAttribute
     {

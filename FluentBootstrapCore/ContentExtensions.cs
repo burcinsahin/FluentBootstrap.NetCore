@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore
 {
     public static class ContentExtensions
     {

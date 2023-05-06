@@ -1,8 +1,12 @@
-﻿using FluentBootstrapCore.Forms;
+﻿using FluentBootstrapNCore;
+using FluentBootstrapNCore.Buttons;
+using FluentBootstrapNCore.Forms;
+using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
 using System;
 using System.Collections.Generic;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Forms
 {
     public static class FormExtensions
     {
@@ -40,9 +44,7 @@ namespace FluentBootstrapCore
         {
             builder.Component.ToggleCss(Css.FormHorizontal, horizontal, Css.FormInline);
             if (defaultlabelWidth.HasValue)
-            {
                 builder.Component.DefaultLabelWidth = defaultlabelWidth.Value;
-            }
             return builder;
         }
 
@@ -78,11 +80,9 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TComponent : Component, ICanCreate<FormGroup>
         {
-            ComponentBuilder<TConfig, FormGroup> builder = new ComponentBuilder<TConfig, FormGroup>(helper.Config, new FormGroup(helper));
+            var builder = new ComponentBuilder<TConfig, FormGroup>(helper.Config, new FormGroup(helper));
             if (label != null)
-            {
                 builder.Component.ControlLabel = builder.GetHelper().ControlLabel(label, labelFor).Component;
-            }
             return builder;
         }
 
@@ -91,11 +91,9 @@ namespace FluentBootstrapCore
         {
             if (label != null)
             {
-                ComponentBuilder<TConfig, ControlLabel> controlLabelBuilder = builder.GetHelper().ControlLabel(label, labelFor);
+                var controlLabelBuilder = builder.GetHelper().ControlLabel(label, labelFor);
                 if (labelAction != null)
-                {
                     labelAction(controlLabelBuilder);
-                }
                 builder.Component.ControlLabel = controlLabelBuilder.Component;
             }
             return builder;
@@ -310,9 +308,9 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, Select> AddOptions<TConfig>(this ComponentBuilder<TConfig, Select> builder, params string[] options)
             where TConfig : BootstrapConfig
         {
-            foreach (string option in options)
+            foreach (var option in options)
             {
-                string option1 = option;  // Avoid foreach variable access in closure
+                var option1 = option;  // Avoid foreach variable access in closure
                 builder.AddChild(x => x.SelectOption(option1));
             }
             return builder;
@@ -321,7 +319,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, Select> AddOptions<TConfig>(this ComponentBuilder<TConfig, Select> builder, IEnumerable<KeyValuePair<string, string>> options)
             where TConfig : BootstrapConfig
         {
-            foreach (KeyValuePair<string, string> option in options)
+            foreach (var option in options)
             {
                 var option1 = option;  // Avoid foreach variable access in closure
                 builder.AddChild(x => x.SelectOption(option1.Key, option1.Value,
@@ -427,7 +425,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TComponent : Component, ICanCreate<FormControl>
         {
-            ComponentBuilder<TConfig, FormControl> builder = new ComponentBuilder<TConfig, FormControl>(helper.Config, new FormControl(helper));
+            var builder = new ComponentBuilder<TConfig, FormControl>(helper.Config, new FormControl(helper));
             builder.Component.Label = builder.GetHelper().ControlLabel(label).For(labelFor).Component;
             return builder;
         }
@@ -456,11 +454,9 @@ namespace FluentBootstrapCore
         {
             if (label != null)
             {
-                ComponentBuilder<TConfig, ControlLabel> controlLabelBuilder = builder.GetHelper().ControlLabel(label).For(builder.Component.GetAttribute("name"));
+                var controlLabelBuilder = builder.GetHelper().ControlLabel(label).For(builder.Component.GetAttribute("name"));
                 if (labelAction != null)
-                {
                     labelAction(controlLabelBuilder);
-                }
                 builder.Component.Label = controlLabelBuilder.Component;
             }
             else

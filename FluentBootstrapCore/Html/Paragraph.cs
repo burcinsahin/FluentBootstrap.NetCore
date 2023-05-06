@@ -1,7 +1,8 @@
-﻿using FluentBootstrapCore.ListGroups;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.ListGroups;
 using System.IO;
 
-namespace FluentBootstrapCore.Html
+namespace FluentBootstrapNCore.Html
 {
     public class Paragraph : Tag, IHasTextContent
     {
@@ -14,9 +15,7 @@ namespace FluentBootstrapCore.Html
         {
             // Add the appropriate CSS class if in a list group item
             if (GetComponent<ListGroupItem>() != null)
-            {
                 AddCss(Css.ListGroupItemText);
-            }
 
             base.OnStart(writer);
         }

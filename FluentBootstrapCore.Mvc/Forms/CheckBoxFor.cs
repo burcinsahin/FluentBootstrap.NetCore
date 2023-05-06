@@ -1,11 +1,10 @@
-﻿using FluentBootstrapCore.Mvc.Internals;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
+﻿using FluentBootstrapNCore.Forms;
 using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
 using System;
 using System.IO;
 using System.Linq.Expressions;
 
-namespace FluentBootstrapCore.Mvc.Forms
+namespace FluentBootstrapNCore.Mvc.Forms
 {
     public class CheckBoxFor<TModel, TValue> : Component
     {
@@ -23,16 +22,14 @@ namespace FluentBootstrapCore.Mvc.Forms
         protected override void OnStart(TextWriter writer)
         {
             base.OnStart(writer);
-            ModelExplorer metadata = ExpressionMetadataProvider.FromLambdaExpression(_expression, this.GetHtmlHelper<TModel>().ViewData, this.GetHtmlHelper<TModel>().MetadataProvider);
+            var metadata = ExpressionMetadataProvider.FromLambdaExpression(_expression, this.GetHtmlHelper<TModel>().ViewData, this.GetHtmlHelper<TModel>().MetadataProvider);
             //ModelMetadata metadata = ModelMetadata.FromLambdaExpression(_expression, this.GetHtmlHelper<TModel>().ViewData);
-            string expressionText = ExpressionHelper.GetExpressionText(_expression);
+            var expressionText = ExpressionHelper.GetExpressionText(_expression);
             _name = MvcFormExtensions.GetControlName(this.GetHelper<TModel>(), expressionText);
-            string label = MvcFormExtensions.GetControlLabel(metadata.Metadata, expressionText);
-            bool isChecked = false;
+            var label = MvcFormExtensions.GetControlLabel(metadata.Metadata, expressionText);
+            var isChecked = false;
             if (metadata.Model == null || !bool.TryParse(metadata.Model.ToString(), out isChecked))
-            {
                 isChecked = false;
-            }
             writer.Write(_isNameInLabel
                 ? GetHelper().CheckBox(_name, label, null, isChecked).AddAttribute("value", isChecked)
                 : GetHelper().CheckBox(_name, null, label, isChecked).AddAttribute("value", isChecked));

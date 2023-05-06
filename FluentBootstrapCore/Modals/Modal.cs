@@ -1,7 +1,8 @@
-﻿using FluentBootstrapCore.ListGroups;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.ListGroups;
 using System.IO;
 
-namespace FluentBootstrapCore.Modals
+namespace FluentBootstrapNCore.Modals
 {
     public class Modal : Tag,
         ICanCreate<ModalSection>,

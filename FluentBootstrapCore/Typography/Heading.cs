@@ -1,9 +1,10 @@
-﻿using FluentBootstrapCore.Labels;
-using FluentBootstrapCore.ListGroups;
-using FluentBootstrapCore.MediaObjects;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Labels;
+using FluentBootstrapNCore.ListGroups;
+using FluentBootstrapNCore.MediaObjects;
 using System.IO;
 
-namespace FluentBootstrapCore.Typography
+namespace FluentBootstrapNCore.Typography
 {
     public class Heading : Tag, IHasTextContent,
         ICanCreate<Small>,
@@ -20,15 +21,11 @@ namespace FluentBootstrapCore.Typography
         {
             // Add the appropriate CSS class if in a media object
             if (GetComponent<MediaBody>() != null)
-            {
                 AddCss(Css.MediaHeading);
-            }
 
             // Add the appropriate CSS class if in a list group item
             if (GetComponent<ListGroupItem>() != null)
-            {
                 AddCss(Css.ListGroupItemHeading);
-            }
 
             base.OnStart(writer);
         }
@@ -36,9 +33,7 @@ namespace FluentBootstrapCore.Typography
         protected override void OnFinish(TextWriter writer)
         {
             if (!string.IsNullOrWhiteSpace(SmallText))
-            {
                 GetHelper().Small().SetText(SmallText).Component.StartAndFinish(writer);
-            }
 
             base.OnFinish(writer);
         }

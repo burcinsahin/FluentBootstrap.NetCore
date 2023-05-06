@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public class ComponentWrapper<TConfig, TComponent> : BootstrapHelper<TConfig, TComponent>, IDisposable
         where TConfig : BootstrapConfig

@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Grids;
+﻿using FluentBootstrapNCore.Grids;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     public class ControlLabel : Tag, IHasGridColumnExtensions, IHasTextContent
     {

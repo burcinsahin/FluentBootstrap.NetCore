@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace FluentBootstrap.Tests.Web.Models.MvcTests
+namespace FluentBootstrapNCore.Tests.Mvc.Models.MvcTests
 {
     public class ViewModel
     {

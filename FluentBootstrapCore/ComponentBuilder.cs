@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Html;
+﻿using FluentBootstrapNCore.Interfaces;
+using Microsoft.AspNetCore.Html;
 using System.IO;
 using System.Text.Encodings.Web;
-using System.Web;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public abstract class ComponentBuilder
     {

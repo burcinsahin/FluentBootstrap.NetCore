@@ -1,7 +1,8 @@
-﻿using FluentBootstrapCore.Html;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 
-namespace FluentBootstrapCore.Paginations
+namespace FluentBootstrapNCore.Paginations
 {
     public class Pagination : Tag,
         ICanCreate<PageNum>

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     // This is primarily intended to make working with (and initializing) enumerable sequences of KeyValuePairs easier
     public class KeyValueList<TKey, TValue> : List<KeyValuePair<TKey, TValue>>

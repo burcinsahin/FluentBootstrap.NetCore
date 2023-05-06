@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Thumbnails
+﻿namespace FluentBootstrapNCore.Thumbnails
 {
     public class Caption : Tag
     {

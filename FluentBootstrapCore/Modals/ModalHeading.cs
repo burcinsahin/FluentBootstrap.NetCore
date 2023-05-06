@@ -1,6 +1,7 @@
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 
-namespace FluentBootstrapCore.Modals
+namespace FluentBootstrapNCore.Modals
 {
     public class ModalHeading : ModalSection, ICanCreate<ModalTitle>
     {

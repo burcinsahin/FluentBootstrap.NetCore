@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.ListGroups;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.ListGroups
 {
     public static class ListGroupExtensions
     {

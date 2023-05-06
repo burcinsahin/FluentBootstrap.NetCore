@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Grids
+﻿namespace FluentBootstrapNCore.Grids
 {
     public interface IHasGridColumnExtensions
     {

@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Interfaces;
+using System.IO;
 
-namespace FluentBootstrapCore.MediaObjects
+namespace FluentBootstrapNCore.MediaObjects
 {
     public class Media : Tag,
         ICanCreate<MediaObject>,
@@ -15,9 +16,7 @@ namespace FluentBootstrapCore.MediaObjects
         {
             // Change to a list item if inside a MediaList
             if (GetComponent<MediaList>(true) != null)
-            {
                 TagName = "li";
-            }
 
             base.OnStart(writer);
         }

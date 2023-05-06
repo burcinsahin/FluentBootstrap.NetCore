@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Thumbnails;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Thumbnails
 {
     public static class ThumbnailExtensions
     {

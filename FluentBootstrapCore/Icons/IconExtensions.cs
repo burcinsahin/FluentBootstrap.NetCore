@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Icons;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Icons
 {
     public static class IconExtensions
     {
@@ -17,7 +17,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TTag : Tag, IHasIconExtensions
         {
-            if (icon != FluentBootstrapCore.Icon.None)
+            if (icon != Icons.Icon.None)
             {
                 builder.Component.AddChild(builder.GetHelper().Icon(icon));
                 builder.Component.AddChild(builder.GetHelper().Content(" ")); // Add a space to give a little separation to the icon

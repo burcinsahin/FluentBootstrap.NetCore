@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Labels
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Labels
 {
     public class Label : Tag, IHasTextContent
     {

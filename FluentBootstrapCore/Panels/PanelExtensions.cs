@@ -1,6 +1,6 @@
-﻿using FluentBootstrapCore.Panels;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Panels
 {
     public static class PanelExtensions
     {
@@ -16,11 +16,9 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TComponent : Component, ICanCreate<Panel>
         {
-            ComponentBuilder<TConfig, Panel> builder = new ComponentBuilder<TConfig, Panel>(helper.Config, new Panel(helper));
+            var builder = new ComponentBuilder<TConfig, Panel>(helper.Config, new Panel(helper));
             if (!string.IsNullOrWhiteSpace(title))
-            {
                 builder.AddChild(x => x.PanelHeading().AddChild(y => y.PanelTitle(title, titleHeadingLevel)));
-            }
             return builder;
         }
 

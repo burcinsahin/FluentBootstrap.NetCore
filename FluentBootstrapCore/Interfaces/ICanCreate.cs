@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore
+﻿namespace FluentBootstrapNCore.Interfaces
 {
     // Implement this interface directly from a component to indicate it can create a different component
     public interface ICanCreate<in TComponent>

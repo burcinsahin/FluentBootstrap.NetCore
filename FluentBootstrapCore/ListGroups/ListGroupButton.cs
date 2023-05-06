@@ -1,7 +1,8 @@
-﻿using FluentBootstrapCore.Badges;
-using FluentBootstrapCore.Icons;
+﻿using FluentBootstrapNCore.Badges;
+using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.ListGroups
+namespace FluentBootstrapNCore.ListGroups
 {
     public class ListGroupButton : Tag, IHasIconExtensions, IHasDisabledAttribute, IHasTextContent, IHasValueAttribute,
         ICanCreate<Badge>

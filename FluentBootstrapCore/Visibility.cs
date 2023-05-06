@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     [Flags]
     public enum Visibility

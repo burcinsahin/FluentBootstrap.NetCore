@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.MediaObjects;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.MediaObjects
 {
     public static class MediaObjectExtensions
     {

@@ -1,8 +1,10 @@
-﻿using FluentBootstrapCore.Grids;
+﻿using FluentBootstrapNCore.Grids;
+using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 using System.Linq;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     public class FormControl : Tag, IHasGridColumnExtensions, IFormValidation, IHasDisabledAttribute,
         ICanCreate<HelpBlock>
@@ -37,9 +39,7 @@ namespace FluentBootstrapCore.Forms
         {
             // Only prepare once
             if (_prepared)
-            {
                 return;
-            }
             _prepared = true;
 
             // Make sure we're in a form group, but only if we're also in a form
@@ -54,10 +54,8 @@ namespace FluentBootstrapCore.Forms
             if (CssClasses.Any(x => x.StartsWith("has-")))
             {
                 if (_wrapper == null)
-                {
                     _wrapper = GetHelper().Element("div").Component;
-                }
-                foreach (string formValidation in CssClasses.Where(x => x.StartsWith("has-")))
+                foreach (var formValidation in CssClasses.Where(x => x.StartsWith("has-")))
                 {
                     _wrapper.CssClasses.Add(formValidation);
                 }
@@ -68,10 +66,8 @@ namespace FluentBootstrapCore.Forms
             if (CssClasses.Any(x => x.StartsWith("col-")))
             {
                 if (_wrapper == null)
-                {
                     _wrapper = GetHelper().Element("div").Component;
-                }
-                foreach (string col in CssClasses.Where(x => x.StartsWith("col-")))
+                foreach (var col in CssClasses.Where(x => x.StartsWith("col-")))
                 {
                     _wrapper.CssClasses.Add(col);
                 }
@@ -82,17 +78,13 @@ namespace FluentBootstrapCore.Forms
             if (_label != null)
             {
                 // Set the label's for attribute to the input id
-                string id = Attributes.GetValue("id");
+                var id = Attributes.GetValue("id");
                 if (!string.IsNullOrWhiteSpace(id))
-                {
                     _label.MergeAttribute("for", id);
-                }
 
                 // Add or write the label
                 if (formGroup != null)
-                {
                     formGroup.ControlLabel = _label;
-                }
                 else
                 {
                     _label.StartAndFinish(writer);
@@ -101,9 +93,7 @@ namespace FluentBootstrapCore.Forms
 
             // Start the new form group if we created one
             if (_wrapper != null)
-            {
                 _wrapper.Start(writer);
-            }
 
             _prepared = true;
         }
@@ -121,9 +111,7 @@ namespace FluentBootstrapCore.Forms
 
             // Add the help text
             if (!string.IsNullOrEmpty(Help))
-            {
                 GetBuilder(new HelpBlock(GetHelper())).SetText(Help).Component.StartAndFinish(writer);
-            }
 
             Pop(_wrapper, writer);
         }
@@ -136,17 +124,13 @@ namespace FluentBootstrapCore.Forms
         public virtual void AddLabelCss(params string[] cssClasses)
         {
             if (_label != null)
-            {
                 _label.AddCss(cssClasses);
-            }
         }
 
         public virtual void RemoveLabelCss(params string[] cssClasses)
         {
             if (_label != null)
-            {
                 _label.RemoveCss(cssClasses);
-            }
         }
     }
 }

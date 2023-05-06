@@ -1,7 +1,7 @@
-﻿using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Misc;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Misc
 {
     public static class MiscExtensions
     {

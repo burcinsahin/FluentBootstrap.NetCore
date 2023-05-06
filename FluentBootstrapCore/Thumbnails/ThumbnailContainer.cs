@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Thumbnails
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Thumbnails
 {
     public class ThumbnailContainer : Tag,
         ICanCreate<Thumbnail>,

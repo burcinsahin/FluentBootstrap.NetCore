@@ -1,8 +1,9 @@
-﻿using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Typography;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Typography;
 using System.IO;
 
-namespace FluentBootstrapCore.Misc
+namespace FluentBootstrapNCore.Misc
 {
     public class PageHeader : Heading, IHasTextContent
     {

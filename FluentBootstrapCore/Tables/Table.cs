@@ -1,7 +1,8 @@
-﻿using FluentBootstrapCore.Html;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 
-namespace FluentBootstrapCore.Tables
+namespace FluentBootstrapNCore.Tables
 {
     public class Table : Tag,
         ICanCreate<TableSection>,
@@ -33,9 +34,7 @@ namespace FluentBootstrapCore.Tables
             base.OnFinish(writer);
 
             if (_responsiveDiv != null)
-            {
                 _responsiveDiv.Finish(writer);
-            }
         }
     }
 }

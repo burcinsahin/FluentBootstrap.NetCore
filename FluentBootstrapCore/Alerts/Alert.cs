@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Typography;
+using System.IO;
 
-namespace FluentBootstrapCore.Alerts
+namespace FluentBootstrapNCore.Alerts
 {
     public class Alert : Tag, IHasTextContent
     {
@@ -16,9 +19,7 @@ namespace FluentBootstrapCore.Alerts
         protected override void OnStart(TextWriter writer)
         {
             if (Dismissible)
-            {
                 AddCss(Css.AlertDismissible);
-            }
 
             base.OnStart(writer);
 
@@ -31,9 +32,7 @@ namespace FluentBootstrapCore.Alerts
             }
 
             if (!string.IsNullOrWhiteSpace(Heading))
-            {
                 GetHelper().Strong(Heading + " ").Component.StartAndFinish(writer);
-            }
         }
     }
 }

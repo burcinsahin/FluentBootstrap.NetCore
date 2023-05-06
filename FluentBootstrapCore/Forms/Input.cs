@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Icons;
+using FluentBootstrapNCore.Interfaces;
+using System.IO;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     public class Input
         : FormControl, IHasValueAttribute, IHasNameAttribute,
@@ -20,9 +22,7 @@ namespace FluentBootstrapCore.Forms
         {
             // Add the feedback icon
             if (Icon != Icon.None)
-            {
                 GetHelper().Icon(Icon).AddCss(Css.FormControlFeedback).Component.StartAndFinish(writer);
-            }
 
             base.OnFinish(writer);
         }

@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Typography
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Typography
 {
     public class List : Tag,
         ICanCreate<ListItem>

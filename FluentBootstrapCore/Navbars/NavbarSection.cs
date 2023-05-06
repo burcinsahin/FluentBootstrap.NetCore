@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace FluentBootstrapCore.Navbars
+namespace FluentBootstrapNCore.Navbars
 {
     public abstract class NavbarSection : Tag
     {

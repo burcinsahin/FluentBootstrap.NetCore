@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Dropdowns;
+﻿using FluentBootstrapNCore.Dropdowns;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.Buttons
+namespace FluentBootstrapNCore.Buttons
 {
     public class ButtonGroup : Tag,
         ICanCreate<Button>,

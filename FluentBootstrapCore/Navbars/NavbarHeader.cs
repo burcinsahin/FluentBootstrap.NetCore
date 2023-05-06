@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Interfaces;
+using System.IO;
 
-namespace FluentBootstrapCore.Navbars
+namespace FluentBootstrapNCore.Navbars
 {
     public class NavbarHeader : NavbarSection,
         ICanCreate<NavbarToggle>,
@@ -15,11 +16,9 @@ namespace FluentBootstrapCore.Navbars
 
         protected override void OnStart(TextWriter writer)
         {
-            Navbar navbar = GetComponent<Navbar>();
+            var navbar = GetComponent<Navbar>();
             if (navbar != null)
-            {
                 navbar.HasHeader = true;
-            }
 
             base.OnStart(writer);
         }
@@ -27,9 +26,7 @@ namespace FluentBootstrapCore.Navbars
         protected override void OnFinish(TextWriter writer)
         {
             if (!HasToggle)
-            {
                 GetHelper().NavbarToggle().Component.StartAndFinish(writer);
-            }
 
             base.OnFinish(writer);
         }

@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
+using System.IO;
 
-namespace FluentBootstrapCore.Typography
+namespace FluentBootstrapNCore.Typography
 {
     public class Blockquote : Tag
     {
@@ -17,14 +19,10 @@ namespace FluentBootstrapCore.Typography
             base.OnStart(writer);
 
             if (!string.IsNullOrWhiteSpace(Quote))
-            {
                 GetHelper().Element("p").SetText(Quote).Component.StartAndFinish(writer);
-            }
 
             if (!string.IsNullOrWhiteSpace(Footer))
-            {
                 GetHelper().Element("footer").SetText(Footer).Component.StartAndFinish(writer);
-            }
         }
     }
 }

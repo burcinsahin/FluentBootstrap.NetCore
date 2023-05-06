@@ -1,8 +1,9 @@
-﻿using FluentBootstrapCore.ListGroups;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.ListGroups;
 using System;
 using System.IO;
 
-namespace FluentBootstrapCore.Panels
+namespace FluentBootstrapNCore.Panels
 {
     public class Panel : Tag,
         ICanCreate<PanelSection>,
@@ -20,7 +21,7 @@ namespace FluentBootstrapCore.Panels
         #region Overrides of Tag
         protected override void OnStart(TextWriter writer)
         {
-            PanelGroup panelGroup = GetComponent<PanelGroup>();
+            var panelGroup = GetComponent<PanelGroup>();
             if (panelGroup != null)
             {
                 if (panelGroup.Accordion)

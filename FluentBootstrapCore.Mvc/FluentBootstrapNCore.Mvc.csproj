@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FluentBootstrapCore\FluentBootstrapCore.csproj" />
+    <ProjectReference Include="..\FluentBootstrapCore\FluentBootstrapNCore.csproj" />
   </ItemGroup>
 
 </Project>

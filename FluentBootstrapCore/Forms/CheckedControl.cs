@@ -1,9 +1,9 @@
-﻿using FluentBootstrapCore.Html;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
 using Microsoft.AspNetCore.Html;
 using System.IO;
-using System.Web;
 
-namespace FluentBootstrapCore.Forms
+namespace FluentBootstrapNCore.Forms
 {
     public class CheckedControl : FormControl, IHasValueAttribute, IHasNameAttribute
     {
@@ -27,15 +27,11 @@ namespace FluentBootstrapCore.Forms
             Prepare(writer);
 
             if (Checked)
-            {
                 MergeAttribute("checked", "checked");
-            }
 
             // Add the description as child content
             if (!string.IsNullOrEmpty(Description))
-            {
                 AddChild(GetHelper().Content(" " + Description));
-            }
             else if (Inline && !SuppressLabelWrapper)
             {
                 // Add a space if we're inline without a description
@@ -45,20 +41,18 @@ namespace FluentBootstrapCore.Forms
             }
 
             // See if we're in a horizontal form or form group
-            Form form = GetComponent<Form>();
-            FormGroup formGroup = GetComponent<FormGroup>();
-            bool horizontal = form != null && form.Horizontal && (formGroup == null || !formGroup.Horizontal.HasValue || formGroup.Horizontal.Value);
+            var form = GetComponent<Form>();
+            var formGroup = GetComponent<FormGroup>();
+            var horizontal = form != null && form.Horizontal && (formGroup == null || !formGroup.Horizontal.HasValue || formGroup.Horizontal.Value);
 
             // Add the wrapper
             if (!Inline)
             {
-                ComponentBuilder<BootstrapConfig, Element> builder = GetHelper().Element("div").AddCss(GetAttribute("type"));
+                var builder = GetHelper().Element("div").AddCss(GetAttribute("type"));
 
                 // Hack to make manual padding adjustments if we're horizontal
                 if (horizontal)
-                {
                     builder.AddStyle("padding-top", "0");
-                }
 
                 _wrapper = builder.Component;
                 _wrapper.Start(writer);
@@ -67,13 +61,11 @@ namespace FluentBootstrapCore.Forms
             // Add the label wrapper
             if (!SuppressLabelWrapper)
             {
-                ComponentBuilder<BootstrapConfig, Element> labelBuilder = GetHelper().Element("label").AddCss(Inline ? GetAttribute("type") + "-inline" : GetAttribute("type"));
+                var labelBuilder = GetHelper().Element("label").AddCss(Inline ? GetAttribute("type") + "-inline" : GetAttribute("type"));
 
                 // Another hack for manual padding adjustments if inline and horizontal
                 if (Inline && horizontal)
-                {
                     labelBuilder.AddStyle("padding-top", "0");
-                }
 
                 _label = labelBuilder.Component;
                 _label.Start(writer);
@@ -88,13 +80,9 @@ namespace FluentBootstrapCore.Forms
 
             // Finish the wrapper and label
             if (_label != null)
-            {
                 _label.Finish(writer);
-            }
             if (_wrapper != null)
-            {
                 _wrapper.Finish(writer);
-            }
         }
     }
 }

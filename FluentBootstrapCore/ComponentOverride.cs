@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public abstract class ComponentOverride
     {

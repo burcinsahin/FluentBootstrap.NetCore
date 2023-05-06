@@ -1,8 +1,9 @@
-﻿using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Links;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 using System.IO;
 
-namespace FluentBootstrapCore.Breadcrumbs
+namespace FluentBootstrapNCore.Breadcrumbs
 {
     public class Crumb : Tag, IHasLinkExtensions, IHasTextContent
     {
@@ -20,9 +21,7 @@ namespace FluentBootstrapCore.Breadcrumbs
             // Create the list item wrapper
             _listItem = GetHelper().Element("li").Component;
             if (Active)
-            {
                 _listItem.AddCss(Css.Active);
-            }
             _listItem.Start(writer);
 
             base.OnStart(Active ? new SuppressOutputWriter() : writer);

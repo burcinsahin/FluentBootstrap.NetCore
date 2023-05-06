@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Dropdowns;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.Dropdowns
 {
     public static class DropdownExtensions
     {
@@ -39,9 +40,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
         {
             if (dropup)
-            {
                 builder.Component.ToggleCss(Css.Dropup, true, Css.Dropdown);
-            }
             else
             {
                 builder.Component.ToggleCss(Css.Dropdown, false, Css.Dropup);

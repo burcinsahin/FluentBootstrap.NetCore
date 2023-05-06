@@ -1,7 +1,9 @@
-﻿using System;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
+using System;
 using System.IO;
 
-namespace FluentBootstrapCore.ProgressBars
+namespace FluentBootstrapNCore.ProgressBars
 {
     public class ProgressBar : Tag, IHasTextContent
     {
@@ -25,16 +27,14 @@ namespace FluentBootstrapCore.ProgressBars
         protected override void OnStart(TextWriter writer)
         {
             // Set the min, max, and value including progress bar width style
-            int percent = (int)(((double)(Value - Min) / (double)(Max - Min)) * 100.0);
+            var percent = (int)((Value - Min) / (double)(Max - Min) * 100.0);
             percent = Math.Max(0, percent);
             percent = Math.Min(100, percent);
             MergeAttribute("aria-valuenow", Value.ToString());
             MergeAttribute("aria-valuemin", Min.ToString());
             MergeAttribute("aria-valuemax", Max.ToString());
             if (percent != 0)
-            {
                 MergeStyle("width", percent + "%");
-            }
 
             // Make sure we're stripped if also animated
             if (Animated)
@@ -52,9 +52,7 @@ namespace FluentBootstrapCore.ProgressBars
             base.OnStart(writer);
 
             if (ShowPercent)
-            {
                 GetHelper().Content(percent + "%").Component.StartAndFinish(writer);
-            }
             else
             {
                 GetHelper().Element("span").AddCss(Css.SrOnly).SetText(percent + "% Complete").Component.StartAndFinish(writer);
@@ -66,9 +64,7 @@ namespace FluentBootstrapCore.ProgressBars
             base.OnFinish(writer);
 
             if (_progress != null)
-            {
                 _progress.Finish(writer);
-            }
         }
     }
 }

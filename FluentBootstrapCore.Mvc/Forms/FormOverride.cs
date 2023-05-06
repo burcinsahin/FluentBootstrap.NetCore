@@ -1,13 +1,9 @@
-﻿using FluentBootstrapCore.Forms;
-using FluentBootstrapCore.Internals;
-using FluentBootstrapCore.Mvc.Internals;
+﻿using FluentBootstrapNCore.Forms;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using System;
-using System.Collections;
 using System.IO;
 
-namespace FluentBootstrapCore.Mvc.Forms
+namespace FluentBootstrapNCore.Mvc.Forms
 {
     internal class FormOverride<TModel> : ComponentOverride<Form>
     {
@@ -17,7 +13,7 @@ namespace FluentBootstrapCore.Mvc.Forms
         {
             // Generate the form ID if one is needed (if one was already set in the htmlAttributes, this does nothing)
             var viewContext = this.GetHtmlHelper<TModel>().ViewContext;
-            bool flag = viewContext.ClientValidationEnabled
+            var flag = viewContext.ClientValidationEnabled
                 /*TODO:??? && !viewContext.UnobtrusiveJavaScriptEnabled*/;
             if (flag)
             {
@@ -25,9 +21,7 @@ namespace FluentBootstrapCore.Mvc.Forms
                 var tagBuilder = new TagBuilder("form");
                 var id = Component.GetAttribute("id");
                 if (!string.IsNullOrWhiteSpace(id))
-                {
                     tagBuilder.MergeAttribute("id", id);
-                }
                 tagBuilder.GenerateId(FormIdGenerator(), "_");
                 Component.MergeAttribute("id", tagBuilder.Attributes["id"]);
             }
@@ -37,19 +31,15 @@ namespace FluentBootstrapCore.Mvc.Forms
             // Set a new form context, including a form ID if one was generated
             viewContext.FormContext = new FormContext();
             if (flag)
-            {
                 //viewContext.FormContext.FormId = Component.GetAttribute("id");
                 viewContext.FormContext.FormData["id"] = Component.GetAttribute("id");
-            }
         }
 
         protected override void OnFinish(TextWriter writer)
         {
             // Validation summary if it's not hidden or one was not already output
             if (!HideValidationSummary)
-            {
                 this.GetHelper<TModel>().ValidationSummary().GetComponent().StartAndFinish(writer);
-            }
 
             base.OnFinish(writer);
 
@@ -71,7 +61,7 @@ namespace FluentBootstrapCore.Mvc.Forms
         {
             var items = this.GetHtmlHelper<TModel>().ViewContext.HttpContext.Items;
             var item = items[_lastBootstrapFormNumKey];
-            var num = (item != null ? (int)item + 1 : 0);
+            var num = item != null ? (int)item + 1 : 0;
             items[_lastBootstrapFormNumKey] = num;
             return string.Format("bsform{0}", num);
         }

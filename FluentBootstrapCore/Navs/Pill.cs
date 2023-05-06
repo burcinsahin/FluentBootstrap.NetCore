@@ -1,6 +1,7 @@
-﻿using FluentBootstrapCore.Badges;
+﻿using FluentBootstrapNCore.Badges;
+using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore.Navs
+namespace FluentBootstrapNCore.Navs
 {
     public class Pill : NavLink,
         ICanCreate<Badge>

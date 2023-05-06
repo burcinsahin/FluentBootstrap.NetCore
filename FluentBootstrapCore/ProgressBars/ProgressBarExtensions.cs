@@ -1,14 +1,14 @@
-﻿using FluentBootstrapCore.ProgressBars;
+﻿using FluentBootstrapNCore.Interfaces;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore.ProgressBars
 {
     public static class ProgressBarExtensions
     {
-        public static ComponentBuilder<TConfig, ProgressBars.Progress> Progress<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
+        public static ComponentBuilder<TConfig, Progress> Progress<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
             where TConfig : BootstrapConfig
-            where TComponent : Component, ICanCreate<ProgressBars.Progress>
+            where TComponent : Component, ICanCreate<Progress>
         {
-            return new ComponentBuilder<TConfig, ProgressBars.Progress>(helper.Config, new ProgressBars.Progress(helper));
+            return new ComponentBuilder<TConfig, Progress>(helper.Config, new Progress(helper));
         }
 
         public static ComponentBuilder<TConfig, ProgressBar> ProgressBar<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper, int value, int min = 0, int max = 100)

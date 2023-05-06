@@ -1,6 +1,8 @@
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Panels;
 using System.IO;
 
-namespace FluentBootstrapCore.Modals
+namespace FluentBootstrapNCore.Modals
 {
     public class ModalTitle : Tag, IHasTextContent
     {
@@ -13,9 +15,7 @@ namespace FluentBootstrapCore.Modals
         protected override void OnStart(TextWriter writer)
         {
             if (GetComponent<ModalHeading>() == null)
-            {
                 GetHelper().PanelHeading().Component.Start(writer);
-            }
 
             base.OnStart(writer);
         }

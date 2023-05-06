@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Typography;
+using System.IO;
 
-namespace FluentBootstrapCore.MediaObjects
+namespace FluentBootstrapNCore.MediaObjects
 {
     public class MediaBody : Tag, IHasTextContent
     {
@@ -16,9 +18,7 @@ namespace FluentBootstrapCore.MediaObjects
             base.OnStart(writer);
 
             if (!string.IsNullOrWhiteSpace(Heading))
-            {
                 GetHelper().Heading4(Heading).Component.StartAndFinish(writer);
-            }
         }
     }
 }

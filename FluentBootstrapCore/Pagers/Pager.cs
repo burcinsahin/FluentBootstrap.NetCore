@@ -1,7 +1,8 @@
-﻿using FluentBootstrapCore.Html;
+﻿using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
 using System.IO;
 
-namespace FluentBootstrapCore.Pagers
+namespace FluentBootstrapNCore.Pagers
 {
     public class Pager : Tag,
         ICanCreate<Page>

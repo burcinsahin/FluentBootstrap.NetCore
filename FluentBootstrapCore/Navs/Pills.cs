@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore.Navs
+﻿using FluentBootstrapNCore.Interfaces;
+
+namespace FluentBootstrapNCore.Navs
 {
     public class Pills : Nav,
         ICanCreate<Pill>

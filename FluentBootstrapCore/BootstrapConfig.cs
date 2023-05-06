@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 
-namespace FluentBootstrapCore
+namespace FluentBootstrapNCore
 {
     public abstract class BootstrapConfig
     {
@@ -38,15 +38,11 @@ namespace FluentBootstrapCore
             // From ViewDataDictionary.FormatValueInternal(), which is called from HtmlHelper.FormatValue()
             // Reproduced here to remove dependency on ASP.NET MVC 4
             if (value == null)
-            {
                 return string.Empty;
-            }
             if (string.IsNullOrEmpty(format))
-            {
                 return Convert.ToString(value, CultureInfo.CurrentCulture);
-            }
-            CultureInfo currentCulture = CultureInfo.CurrentCulture;
-            object[] objArray = new object[] { value };
+            var currentCulture = CultureInfo.CurrentCulture;
+            var objArray = new object[] { value };
             return string.Format(currentCulture, format, objArray);
         }
 
@@ -65,12 +61,10 @@ namespace FluentBootstrapCore
             where TOverride : ComponentOverride<TComponent>, new()
         {
             if (!_registeringComponentOverrides)
-            {
                 throw new InvalidOperationException("You can only register component overrides from within the RegisterComponentOverrides method.");
-            }
             ComponentOverrides[typeof(TComponent)] = (config, component) =>
             {
-                TOverride componentOverride = new TOverride();
+                var componentOverride = new TOverride();
                 componentOverride.Config = config;
                 componentOverride.Component = (TComponent)component;
                 return componentOverride;

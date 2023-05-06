@@ -1,14 +1,16 @@
-﻿using FluentBootstrapCore.Buttons;
-using FluentBootstrapCore.Forms;
-using FluentBootstrapCore.Html;
-using FluentBootstrapCore.Links;
-using FluentBootstrapCore.Misc;
-using FluentBootstrapCore.Navbars;
-using FluentBootstrapCore.Navs;
+﻿using FluentBootstrapNCore.Buttons;
+using FluentBootstrapNCore.Forms;
+using FluentBootstrapNCore.Html;
+using FluentBootstrapNCore.Interfaces;
+using FluentBootstrapNCore.Links;
+using FluentBootstrapNCore.Misc;
+using FluentBootstrapNCore.Navbars;
+using FluentBootstrapNCore.Navs;
+using FluentBootstrapNCore.Typography;
 using System.IO;
 using System.Linq;
 
-namespace FluentBootstrapCore.Dropdowns
+namespace FluentBootstrapNCore.Dropdowns
 {
     public class Dropdown : Tag, IHasButtonExtensions, IHasButtonStateExtensions, IHasTextContent,
         ICanCreate<DropdownDivider>,
@@ -17,7 +19,7 @@ namespace FluentBootstrapCore.Dropdowns
     {
         private bool _inputGroupButton = false;
         private Component _toggle;
-        private Typography.List _list;
+        private List _list;
 
         public bool Caret { get; set; }
         public bool MenuRight { get; set; }
@@ -33,15 +35,13 @@ namespace FluentBootstrapCore.Dropdowns
         {
             // Check if we're in a navbar, and if so, make sure we're in a navbar nav
             if (GetComponent<Navbar>() != null && GetComponent<NavbarNav>() == null)
-            {
                 GetHelper().NavbarNav().Component.Start(writer);
-            }
 
             // Check if we're in a nav
             if (GetComponent<Nav>(true) != null || GetComponent<NavbarNav>(true) != null)
             {
                 TagName = "li";
-                Link link = GetHelper().Link(null).Component;
+                var link = GetHelper().Link(null).Component;
                 link.AddCss(Css.DropdownToggle);
                 link.MergeAttribute("data-toggle", "dropdown");
                 _toggle = link;
@@ -49,11 +49,11 @@ namespace FluentBootstrapCore.Dropdowns
             else
             {
                 // Create a button and copy over any button classes and text
-                Button button = GetHelper().Button().Component;
+                var button = GetHelper().Button().Component;
                 button.RemoveCss(Css.BtnDefault);
                 button.AddCss(Css.DropdownToggle);
                 button.MergeAttribute("data-toggle", "dropdown");
-                foreach (string buttonClass in CssClasses.Where(x => x.StartsWith("btn")))
+                foreach (var buttonClass in CssClasses.Where(x => x.StartsWith("btn")))
                 {
                     button.CssClasses.Add(buttonClass);
                 }
@@ -69,23 +69,19 @@ namespace FluentBootstrapCore.Dropdowns
             }
             else
             {
-                Element element = GetHelper().Element("span").AddCss(Css.SrOnly).Component;
+                var element = GetHelper().Element("span").AddCss(Css.SrOnly).Component;
                 element.AddChild(GetHelper().Content("Toggle Dropdown"));
                 _toggle.AddChild(element);
             }
             TextContent = null;
             if (Caret)
-            {
                 _toggle.AddChild(GetHelper().Caret());
-            }
 
             // Check if we're in a InputGroupButton, then
             // Check if we're in a button group, and if so change the outer CSS class
             // Do this after copying over the btn classes so this doesn't get copied
             if (GetComponent<InputGroupButton>(true) != null)
-            {
                 _inputGroupButton = true;
-            }
             else if (GetComponent<ButtonGroup>(true) != null)
             {
                 ToggleCss(Css.BtnGroup, true, Css.Dropdown);
@@ -96,13 +92,9 @@ namespace FluentBootstrapCore.Dropdowns
             _list.AddCss(Css.DropdownMenu);
             _list.MergeAttribute("role", "menu");
             if (MenuRight)
-            {
                 _list.AddCss(Css.DropdownMenuRight);
-            }
             if (MenuLeft)
-            {
                 _list.AddCss(Css.DropdownMenuLeft);
-            }
 
             // Start this component
             base.OnStart(_inputGroupButton ? new SuppressOutputWriter() : writer);

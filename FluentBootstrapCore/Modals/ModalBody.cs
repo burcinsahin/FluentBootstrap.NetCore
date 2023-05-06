@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Modals
+﻿namespace FluentBootstrapNCore.Modals
 {
     public class ModalBody : ModalSection
     {

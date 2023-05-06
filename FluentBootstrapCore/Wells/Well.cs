@@ -1,4 +1,4 @@
-﻿namespace FluentBootstrapCore.Wells
+﻿namespace FluentBootstrapNCore.Wells
 {
     public class Well : Tag
     {

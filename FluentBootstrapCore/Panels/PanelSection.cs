@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace FluentBootstrapCore.Panels
+namespace FluentBootstrapNCore.Panels
 {
     public abstract class PanelSection : Tag
     {

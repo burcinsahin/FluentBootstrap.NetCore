@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FluentBootstrapNCore.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace FluentBootstrapCore.Mvc
+namespace FluentBootstrapNCore.Mvc
 {
     public class MvcBootstrapHelper<TModel> : BootstrapHelper<MvcBootstrapConfig<TModel>, CanCreate>
     {

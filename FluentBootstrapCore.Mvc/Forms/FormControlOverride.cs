@@ -1,11 +1,9 @@
-﻿using FluentBootstrapCore.Forms;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using FluentBootstrapNCore.Forms;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using System;
 using System.IO;
 
-namespace FluentBootstrapCore.Mvc.Forms
+namespace FluentBootstrapNCore.Mvc.Forms
 {
     internal class FormControlOverride<TModel> : ComponentOverride<FormControl>
     {
@@ -18,9 +16,7 @@ namespace FluentBootstrapCore.Mvc.Forms
                 var tagBuilder = new TagBuilder("form");
                 var id = Component.GetAttribute("id");
                 if (!string.IsNullOrWhiteSpace(id))
-                {
                     tagBuilder.MergeAttribute("id", id);
-                }
                 tagBuilder.GenerateId(name, "");
                 Component.MergeAttribute("id", tagBuilder.Attributes["id"]);
             }
@@ -33,10 +29,8 @@ namespace FluentBootstrapCore.Mvc.Forms
                 // Set the validation class
                 var config = (MvcBootstrapConfig<TModel>)Config;
                 if (config.HtmlHelper.ViewData.ModelState.TryGetValue(name, out var modelState) && modelState.Errors.Count > 0)
-                {
                     Component.CssClasses.Add(HtmlHelper.ValidationInputCssClassName);
-                }
-                
+
                 // Add other validation attributes
                 //TODO:???Component.MergeAttributes<string, object>(config.HtmlHelper.GetUnobtrusiveValidationAttributes(name, null));
             }
