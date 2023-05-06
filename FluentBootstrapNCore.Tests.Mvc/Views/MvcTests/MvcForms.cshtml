@@ -1,0 +1,180 @@
+﻿@model FluentBootstrapNCore.Tests.Mvc.Models.MvcTests.ViewModel
+
+@using (Html.Bootstrap().Container().Begin())
+{
+    using (var form = Html.Bootstrap().Form("Login", "Home", FormMethod.Post, new { area = "Admin" }).AddCss("form-signin").Begin())
+    {
+        @form.InputFor(model => model.PropA)
+        @form.PasswordFor(model => model.PropB).SetMaxLength(16).IsRequired()
+    }
+
+    @Html.Bootstrap().Heading1("Validation Summary")
+    using (Html.Bootstrap().Div().SetId("test-validation-summary").Begin())
+    {
+        @using (var form = Html.Bootstrap().Form().Begin())
+        {
+            @form.EditorFor(x => x.PropA)
+        }
+    }
+
+    <hr />
+
+    @*
+
+
+    @Html.Bootstrap().Heading1("Explicit Validation Summary")
+    using (Html.Bootstrap().Div().SetId("test-explicit-validation-summary").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().Begin())
+        {
+            @form.ValidationSummary()
+            @form.DisplayFor(x => x.PropA)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Property Validation")
+    using (Html.Bootstrap().Div().SetId("test-property-validation").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().Begin())
+        {
+            @form.EditorFor(x => x.PropB)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Editor Or Display For")
+    using (Html.Bootstrap().Div().SetId("test-editor-or-display-for").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().Begin())
+        {
+            @form.EditorOrDisplayFor(true, x => x.PropA)
+            @form.EditorOrDisplayFor(false, x => x.PropB)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Display List For")
+    using (Html.Bootstrap().Div().SetId("test-display-list-for").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.DisplayListFor(x => x.PropCOptions.Values)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Editor List For")
+    using (Html.Bootstrap().Div().SetId("test-editor-list-for").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.EditorListFor(x => x.PropCOptions.Values)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Input For")
+    using (Html.Bootstrap().Div().SetId("test-input-for").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.InputFor(x => x.PropA)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Password For")
+    using (Html.Bootstrap().Div().SetId("test-password-for").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.PasswordFor(x => x.PropA)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("CheckBox For")
+    using (Html.Bootstrap().Div().SetId("test-checkbox-for").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.CheckBoxFor(x => x.PropD)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Radio For")
+    using (Html.Bootstrap().Div().SetId("test-radio-for").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.RadioFor(x => x.PropB, 1).SetControlLabel(null).SetDescription("1")
+            @form.RadioFor(x => x.PropB, 2).SetControlLabel(null).SetDescription("2")
+            @form.RadioFor(x => x.PropB, 3).SetControlLabel(null).SetDescription("3")
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Select For")
+    using (Html.Bootstrap().Div().SetId("test-select-for").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.SelectFor(x => x.PropC, Model.PropCOptions.Select(y => new KeyValuePair<string, string>(y.Key.ToString(), y.Value)))
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Select For With Add Options")
+    using (Html.Bootstrap().Div().SetId("test-select-for-with-add-options").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.SelectFor(x => x.PropC).AddOptions(Model.PropCOptions.Select(y => new KeyValuePair<string, string>(y.Key.ToString(), y.Value)))
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Input For With Dotted Child")
+    using (Html.Bootstrap().Div().SetId("test-input-for-dotted").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.InputFor(x => x.Child.ChildPropA)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("TextArea For")
+    using (Html.Bootstrap().Div().SetId("test-textarea-for").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().Begin())
+        {
+            @form.TextAreaFor(x => x.PropA)
+        }
+    }
+
+    <hr />
+
+    @Html.Bootstrap().Heading1("Confirm")
+    using (Html.Bootstrap().Div().SetId("test-confirm").Begin())
+    {
+        using (var form = Html.Bootstrap().Form().HideValidationSummary().SetConfirm("confirm?").Begin())
+        {
+            @form.Submit();
+        }
+    }*@
+}
